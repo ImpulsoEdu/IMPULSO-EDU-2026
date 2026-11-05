@@ -57,7 +57,13 @@
       field.hidden = isDelete;
       setRequired([...field.querySelectorAll("input, select, textarea")], !isDelete);
     });
-    if (createOnlyPanel) createOnlyPanel.hidden = isDelete;
+    if (createOnlyPanel) {
+      createOnlyPanel.hidden = isDelete;
+      setRequired(
+        [...createOnlyPanel.querySelectorAll("input, select, textarea")],
+        !isDelete
+      );
+    }
     if (deleteFields) deleteFields.hidden = !isDelete;
     if (createCancel) createCancel.hidden = isDelete;
     if (deleteCancel) deleteCancel.hidden = !isDelete;
