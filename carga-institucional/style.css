@@ -33,7 +33,7 @@ input, select, textarea { width: 100%; padding: 13px 14px; border: 1px solid #c8
 textarea { min-height: 112px; resize: vertical; }
 input::placeholder, textarea::placeholder { color: #98948b; }
 .field-help, .field-hint { color: #595650; font-size: 12px; line-height: 1.55; }
-.field-help { margin: -18px 0 12px; }
+.field-help { margin: 0 0 14px; }
 .field-help strong { color: #0f1629; }
 .field-hint { margin-top: 8px; }
 .form-message { margin-top: 10px; font-size: 12px; line-height: 1.45; }
