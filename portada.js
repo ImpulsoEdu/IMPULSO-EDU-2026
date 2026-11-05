@@ -124,6 +124,20 @@
   const subjectMetrics = new Map();
   let metricsLoaded = false;
 
+  const subjectNames = {
+    Matematica: "Matemática",
+    Fisica: "Física",
+    Quimica: "Química",
+    SisDeRepr: "Sistema de Representación",
+  };
+
+  const getSubjectKey = (card) => {
+    const match = card.pathname?.match(
+      /\/materias\/(Matematica|Fisica|Quimica|SisDeRepr)\/?$/
+    );
+    return match?.[1];
+  };
+
   const updateStats = () => {
     const visibleCards = subjectCards.filter((card) => !card.hidden);
     const totals = visibleCards.reduce(
@@ -152,26 +166,40 @@
 
   const loadSubjectMetrics = async () => {
     try {
-      const metrics = await Promise.all(
-        subjectCards.map(async (card) => {
-          const response = await fetch(card.href);
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status} al cargar ${card.href}`);
-          }
-          const html = await response.text();
-          const subjectDocument = new DOMParser().parseFromString(html, "text/html");
-          const resources = subjectDocument.querySelectorAll(
-            "[data-section-resource-list] [data-section]"
-          ).length;
-          const sections = subjectDocument.querySelectorAll("[data-section-link]").length;
-          return { card, resources, sections };
-        })
-      );
+      const [metrics, resourcesResponse] = await Promise.all([
+        Promise.all(
+          subjectCards.map(async (card) => {
+            const response = await fetch(card.href, { cache: "no-store" });
+            if (!response.ok) {
+              throw new Error(`HTTP ${response.status} al cargar ${card.href}`);
+            }
+            const html = await response.text();
+            const subjectDocument = new DOMParser().parseFromString(html, "text/html");
+            const resources = subjectDocument.querySelectorAll(
+              "[data-section-resource-list] [data-section]"
+            ).length;
+            const sections = subjectDocument.querySelectorAll("[data-section-link]").length;
+            return { card, resources, sections };
+          })
+        ),
+        fetch("data/resources.json", { cache: "no-store" }),
+      ]);
+
+      let publishedResources = [];
+      if (resourcesResponse.ok) {
+        const parsedResources = await resourcesResponse.json();
+        if (Array.isArray(parsedResources)) publishedResources = parsedResources;
+      }
 
       metrics.forEach(({ card, resources, sections }) => {
+        const subject = subjectNames[getSubjectKey(card)];
+        const publishedCount = publishedResources.filter(
+          (resource) => resource.subject === subject
+        ).length;
+        const totalResources = resources + publishedCount;
         const count = card.querySelector("[data-subject-resource-count]");
-        if (count) count.textContent = String(resources);
-        subjectMetrics.set(card, { resources, sections });
+        if (count) count.textContent = String(totalResources);
+        subjectMetrics.set(card, { resources: totalResources, sections });
       });
       metricsLoaded = true;
     } catch (error) {
