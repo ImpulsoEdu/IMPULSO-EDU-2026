@@ -27,6 +27,9 @@ h1 { max-width: 720px; margin-top: 12px; font-family: Georgia, serif; font-size:
 .mode-button:hover:not(.is-active) { border-color: #248f8d; color: #176f6c; }
 .mode-button:active { transform: translate3d(0, 1px, 0) scale(.985); box-shadow: inset 0 2px 4px rgb(15 22 41 / 18%); }
 .institutional-form { width: min(100% - 40px, 1080px); margin: 0 auto 72px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 18px; }
+.institutional-form[data-mode="delete"] { grid-template-columns: minmax(0, 720px); justify-content: center; }
+.institutional-form[data-mode="delete"] .form-actions { grid-column: 1; justify-content: center; margin-top: 0; }
+.institutional-form[data-mode="delete"] .submit-message { grid-column: 1; }
 .form-panel { padding: clamp(24px, 4vw, 38px); border: 1px solid #d0cec6; border-radius: 20px; background: #fffdfa; box-shadow: 0 12px 30px rgb(15 22 41 / 6%); }
 .form-source { background: #f2ebdd; }
 .panel-heading { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 30px; }
