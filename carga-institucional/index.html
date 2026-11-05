@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../theme-fixes.css">
+  <script src="../portada.js" defer></script>
+  <script src="./carga-institucional.js" defer></script>
+  <title>Carga institucional — EduRepositorio</title>
+</head>
+<body>
+  <main class="institutional-page" data-theme-page>
+    <header class="institutional-header">
+      <a class="back-link" href="../index.html" aria-label="Volver a la portada">← <span>Repositorio</span></a>
+      <div class="header-title"><span>/</span> Carga institucional</div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Activar tema oscuro">
+        <span class="tema-claro">TEMA OSCURO</span>
+      </button>
+    </header>
+
+    <section class="institutional-hero">
+      <span class="eyebrow">ADMINISTRACIÓN DE RECURSOS</span>
+      <h1>Adjuntar archivos institucionales</h1>
+      <p>Completa los datos del contenido y asígnalo a la materia correspondiente.</p>
+    </section>
+
+    <form class="institutional-form" data-upload-form novalidate>
+      <section class="form-panel form-details" aria-labelledby="details-title">
+        <div class="panel-heading">
+          <span class="panel-number">01</span>
+          <div><h2 id="details-title">Datos del contenido</h2><p>Así aparecerá publicado en el repositorio.</p></div>
+        </div>
+
+        <label for="subject">Materia de destino</label>
+        <select id="subject" name="subject" required>
+          <option value="" selected disabled>Selecciona una materia</option>
+          <option>Matemática</option>
+          <option>Física</option>
+          <option>Química</option>
+          <option>Sistema de Representación</option>
+        </select>
+
+        <label for="title">Título del contenido</label>
+        <input id="title" name="title" type="text" placeholder="Ej.: Funciones lineales" required>
+
+        <label for="description">Subtítulo o descripción</label>
+        <textarea id="description" name="description" rows="4" placeholder="Describe brevemente qué incluye este contenido." required></textarea>
+
+        <label for="difficulty">Dificultad</label>
+        <select id="difficulty" name="difficulty" required>
+          <option value="" selected disabled>Selecciona una dificultad</option>
+          <option>Fácil</option>
+          <option>Moderado</option>
+          <option>Avanzado</option>
+        </select>
+      </section>
+
+      <section class="form-panel form-source" aria-labelledby="source-title">
+        <div class="panel-heading">
+          <span class="panel-number">02</span>
+          <div><h2 id="source-title">Enlace del recurso</h2><p>La tarjeta utilizará este enlace público de Google Drive.</p></div>
+        </div>
+
+        <label for="drive-link">Adjuntar enlace de Google Drive</label>
+        <p class="field-help">Este enlace será el contenido público para subir a la plataforma. Recuerda activar el permiso <strong>“Cualquiera con el enlace”</strong> para la correcta visualización del documento.</p>
+        <input id="drive-link" name="drive-link" type="url" inputmode="url" placeholder="https://drive.google.com/file/d/..." autocomplete="url" required aria-describedby="drive-help drive-error">
+        <p id="drive-help" class="field-hint">Solo se aceptan enlaces que comiencen con https://drive.google.com/</p>
+        <p id="drive-error" class="form-message form-message-error" role="alert" hidden>El enlace no es válido. Debes ingresar un enlace genuino de Google Drive para continuar.</p>
+        <p class="form-message form-message-success" data-drive-success hidden>Enlace de Google Drive reconocido.</p>
+
+        <div class="form-actions">
+          <a class="secondary-action" href="../index.html">Cancelar</a>
+          <button class="primary-action" type="submit">Validar y adjuntar</button>
+        </div>
+        <p class="submit-message" data-submit-message role="status" hidden></p>
+      </section>
+    </form>
+  </main>
+</body>
+</html>

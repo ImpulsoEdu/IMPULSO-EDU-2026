@@ -176,6 +176,113 @@ html {
   display: none !important;
 }
 
+/* Institutional upload entry on the home page. */
+.institutional-entry-wrap {
+  width: min(100% - 48px, 1100px);
+  margin: 0 auto 28px;
+}
+
+.institutional-entry {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 22px;
+  border: 1px solid #b8d1cc;
+  border-radius: 16px;
+  background: #e7f1ed;
+  color: #0f1629;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgb(15 22 41 / 5%);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.institutional-entry:hover,
+.institutional-entry:focus-visible {
+  color: #0f1629;
+  border-color: #248f8d;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgb(15 22 41 / 10%);
+}
+
+.institutional-entry-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: #248f8d;
+  color: #fff;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.institutional-entry-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.institutional-entry-copy strong {
+  font-family: "Fraunces-Bold", Georgia, serif;
+  font-size: 19px;
+}
+
+.institutional-entry-copy span {
+  color: #595650;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.institutional-entry-action {
+  color: #19736f;
+  font-family: "JetBrainsMono-Regular", ui-monospace, monospace;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+[data-theme-page].tema-oscuro .institutional-entry {
+  border-color: #315b58;
+  background: #172c2b;
+  color: #f3f0ea;
+}
+
+[data-theme-page].tema-oscuro .institutional-entry:hover,
+[data-theme-page].tema-oscuro .institutional-entry:focus-visible {
+  color: #f3f0ea;
+}
+
+[data-theme-page].tema-oscuro .institutional-entry-copy span {
+  color: #c2bdb6;
+}
+
+[data-theme-page].tema-oscuro .institutional-entry-action {
+  color: #82c7c1;
+}
+
+@media (max-width: 620px) {
+  .institutional-entry-wrap {
+    width: min(100% - 32px, 560px);
+  }
+
+  .institutional-entry {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 18px;
+  }
+
+  .institutional-entry-action {
+    width: 100%;
+    margin-left: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .institutional-entry { transition: none; }
+}
+
 .impulso-footer {
   align-self: stretch;
   border-top: 1px solid #3a2d40;
