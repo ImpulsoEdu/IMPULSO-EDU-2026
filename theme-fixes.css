@@ -179,7 +179,7 @@ html {
 /* Institutional upload entry on the home page. */
 .institutional-entry-wrap {
   width: min(100% - 48px, 1100px);
-  margin: 0 auto 28px;
+  margin: 34px auto 28px;
 }
 
 .institutional-entry {
