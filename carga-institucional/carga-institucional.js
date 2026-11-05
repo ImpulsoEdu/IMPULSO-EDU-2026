@@ -4,6 +4,19 @@
   const driveError = document.querySelector("#drive-error");
   const driveSuccess = document.querySelector("[data-drive-success]");
   const submitMessage = document.querySelector("[data-submit-message]");
+  const subjectSelect = document.querySelector("#subject");
+  const sectionSelect = document.querySelector("#section");
+
+  const sectionsBySubject = {
+    Matemática: [
+      "Operaciones combinadas",
+      "Ecuación y función lineal",
+      "Ecuación y función cuadratica",
+    ],
+    Física: ["M.R.U.", "M.R.U.V.", "Tiro Vertical", "Caída Libre"],
+    Química: ["Tabla Periódica", "Regla del Octeto", "Compuestos Binarios"],
+    "Sistema de Representación": ["Perspectiva Dimetrica", "Historia Regional"],
+  };
 
   const isGoogleDriveUrl = (value) => {
     try {
@@ -26,6 +39,16 @@
 
   driveInput.addEventListener("input", validateDriveLink);
   driveInput.addEventListener("blur", validateDriveLink);
+
+  subjectSelect.addEventListener("change", () => {
+    sectionSelect.replaceChildren(
+      new Option("Selecciona una sección", "", true, true)
+    );
+    sectionsBySubject[subjectSelect.value].forEach((section) => {
+      sectionSelect.add(new Option(section, section));
+    });
+    sectionSelect.disabled = false;
+  });
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
