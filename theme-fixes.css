@@ -182,6 +182,12 @@ html {
   margin: 34px auto 28px;
 }
 
+/* The desktop subject header is a horizontal flex row, so give the entry
+   its own vertical breathing room after the search control. */
+.desktop-subject-backdrop > .institutional-entry-wrap {
+  margin-top: 58px;
+}
+
 .institutional-entry {
   display: flex;
   align-items: center;

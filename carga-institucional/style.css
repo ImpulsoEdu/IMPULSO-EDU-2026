@@ -2,12 +2,12 @@
 
 :root { color-scheme: light; }
 * { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; }
+html, body { margin: 0; min-height: 100%; background: #f5f4f0; }
 body { background: #f5f4f0; color: #0f1629; font-family: "Manrope", sans-serif; }
 button, input, select, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 
-.institutional-page { min-height: 100vh; background: #f5f4f0; transition: background .2s ease, color .2s ease; }
+.institutional-page { display: flex; min-height: 100vh; flex-direction: column; background: #f5f4f0; transition: background .2s ease, color .2s ease; }
 .institutional-header { min-height: 58px; padding: 0 5vw; display: flex; align-items: center; gap: 28px; border-bottom: 3px solid #d0cec6; background: #f2ebdd; }
 .back-link, .header-title { color: #0f1629; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: .04em; text-decoration: none; }
 .back-link { display: inline-flex; gap: 8px; align-items: center; }
@@ -48,7 +48,9 @@ input::placeholder, textarea::placeholder { color: #98948b; }
 .primary-action:hover { background: #176f6c; }
 .submit-message { margin-top: 14px; color: #19736f; text-align: right; font-size: 12px; }
 
-[data-theme-page].tema-oscuro { background: #100e11; color: #f3f0ea; }
+[data-theme-page].tema-oscuro { background: #100e11 !important; color: #f3f0ea; }
+[data-theme-page].tema-oscuro { color-scheme: dark; }
+html:has(.institutional-page.tema-oscuro), body:has(.institutional-page.tema-oscuro) { background: #100e11; }
 [data-theme-page].tema-oscuro .institutional-header { background: #17151a; border-color: #3a2d40; }
 [data-theme-page].tema-oscuro .back-link, [data-theme-page].tema-oscuro .theme-toggle, [data-theme-page].tema-oscuro label, [data-theme-page].tema-oscuro .panel-heading h2, [data-theme-page].tema-oscuro .field-help strong { color: #f3f0ea; }
 [data-theme-page].tema-oscuro .header-title, [data-theme-page].tema-oscuro .institutional-hero p, [data-theme-page].tema-oscuro .panel-heading p, [data-theme-page].tema-oscuro .field-help, [data-theme-page].tema-oscuro .field-hint { color: #bdb8b0; }
