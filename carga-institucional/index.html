@@ -25,7 +25,12 @@
       <p>Completa los datos del contenido y asígnalo a la materia correspondiente.</p>
     </section>
 
-    <form class="institutional-form" data-upload-form novalidate>
+    <div class="mode-switch" role="group" aria-label="Acción de recursos">
+      <button class="mode-button is-active" type="button" data-mode="create" aria-pressed="true">Agregar contenido</button>
+      <button class="mode-button" type="button" data-mode="delete" aria-pressed="false">Eliminar contenido</button>
+    </div>
+
+    <form class="institutional-form" data-upload-form data-mode="create" novalidate>
       <section class="form-panel form-details" aria-labelledby="details-title">
         <div class="panel-heading">
           <span class="panel-number">01</span>
@@ -46,22 +51,36 @@
           <option value="" selected disabled>Selecciona una sección</option>
         </select>
 
-        <label for="title">Título del contenido</label>
-        <input id="title" name="title" type="text" placeholder="Ej.: Funciones lineales" required>
+        <div data-create-only>
+          <label for="title">Título del contenido</label>
+          <input id="title" name="title" type="text" placeholder="Ej.: Funciones lineales" required>
 
-        <label for="description">Subtítulo o descripción</label>
-        <textarea id="description" name="description" rows="4" placeholder="Describe brevemente qué incluye este contenido." required></textarea>
+          <label for="description">Subtítulo o descripción</label>
+          <textarea id="description" name="description" rows="4" placeholder="Describe brevemente qué incluye este contenido." required></textarea>
 
-        <label for="difficulty">Dificultad</label>
-        <select id="difficulty" name="difficulty" required>
-          <option value="" selected disabled>Selecciona una dificultad</option>
-          <option>Fácil</option>
-          <option>Moderado</option>
-          <option>Avanzado</option>
-        </select>
+          <label for="difficulty">Dificultad</label>
+          <select id="difficulty" name="difficulty" required>
+            <option value="" selected disabled>Selecciona una dificultad</option>
+            <option>Fácil</option>
+            <option>Moderado</option>
+            <option>Avanzado</option>
+          </select>
+        </div>
+
+        <div class="delete-fields" data-delete-fields hidden>
+          <label for="resource-to-delete">Contenido a eliminar</label>
+          <select id="resource-to-delete" name="resource-to-delete" required disabled>
+            <option value="" selected disabled>Selecciona primero materia y sección</option>
+          </select>
+          <p class="field-hint">Se mostrarán únicamente los contenidos publicados en la sección elegida.</p>
+
+          <label for="delete-admin-key">Clave de administración</label>
+          <input id="delete-admin-key" name="delete-admin-key" type="password" autocomplete="current-password" placeholder="Ingresa la clave del panel" required disabled>
+          <p class="field-hint">La clave confirma y autoriza el borrado del contenido.</p>
+        </div>
       </section>
 
-      <section class="form-panel form-source" aria-labelledby="source-title">
+      <section class="form-panel form-source" data-create-only-panel aria-labelledby="source-title">
         <div class="panel-heading">
           <span class="panel-number">02</span>
           <div><h2 id="source-title">Enlace del recurso</h2><p>La tarjeta utilizará este enlace público de Google Drive.</p></div>
