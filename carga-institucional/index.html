@@ -74,6 +74,10 @@
         <p id="drive-error" class="form-message form-message-error" role="alert" hidden>El enlace no es válido. Debes ingresar un enlace genuino de Google Drive para continuar.</p>
         <p class="form-message form-message-success" data-drive-success hidden>Enlace de Google Drive reconocido.</p>
 
+        <label for="admin-key">Clave de administración</label>
+        <input id="admin-key" name="admin-key" type="password" autocomplete="current-password" placeholder="Ingresa la clave del panel" required>
+        <p class="field-hint">Esta clave autoriza la creación del recurso y no se guarda en el repositorio.</p>
+
         <div class="form-actions">
           <a class="secondary-action" href="../index.html">Cancelar</a>
           <button class="primary-action" type="submit">Validar y adjuntar</button>

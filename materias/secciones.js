@@ -1,4 +1,69 @@
-(() => {
+ (async () => {
+  const getResourceDataPath = () => {
+    const path = window.location.pathname;
+    return path.includes("/materias/movil/") || path.includes("/materias/tablet/")
+      ? "../../../data/resources.json"
+      : "../../data/resources.json";
+  };
+
+  const getSubjectKey = () => {
+    const match = window.location.pathname.match(
+      /\/materias\/(?:movil\/|tablet\/)?(Matematica|Fisica|Quimica|SisDeRepr)(?:\/|$)/
+    );
+    return match?.[1];
+  };
+
+  const getLinkTitle = (link) => {
+    const title = link.cloneNode(true);
+    title.querySelectorAll(".text2, .text3").forEach((count) => count.remove());
+    return title.textContent.trim();
+  };
+
+  const appendPublishedResources = async () => {
+    try {
+      const response = await fetch(getResourceDataPath(), { cache: "no-store" });
+      if (!response.ok) return;
+      const resources = await response.json();
+      const subject = getSubjectKey();
+      const resourceList = document.querySelector("[data-section-resource-list]");
+      const sectionLinks = [...document.querySelectorAll("[data-section-link]")];
+      if (!resourceList || !subject || !Array.isArray(resources)) return;
+
+      const sectionSlugs = new Map(
+        sectionLinks.map((link) => [getLinkTitle(link), link.dataset.sectionLink])
+      );
+      resources
+        .filter((resource) => resource.subject === ({ Matematica: "Matemática", Fisica: "Física", Quimica: "Química", SisDeRepr: "Sistema de Representación" }[subject]))
+        .forEach((resource) => {
+          const sectionSlug = sectionSlugs.get(resource.section);
+          if (!sectionSlug || resourceList.querySelector(`[data-resource-id="${resource.id}"]`)) return;
+          const card = document.createElement("a");
+          card.className = "resource-card section-resource-card";
+          card.dataset.section = sectionSlug;
+          card.dataset.resourceId = resource.id;
+          card.href = resource.driveUrl;
+          card.target = "_blank";
+          card.rel = "noopener noreferrer";
+          card.setAttribute("aria-label", `Ver recurso: ${resource.title}`);
+          card.innerHTML = `
+            <div class="section-resource-meta">
+              <div class="section-resource-type"><span>Google Drive</span></div>
+              <span class="section-resource-level"></span>
+            </div>
+            <h3 class="section-resource-title"></h3>
+            <p class="section-resource-description"></p>`;
+          card.querySelector(".section-resource-level").textContent = resource.difficulty;
+          card.querySelector(".section-resource-title").textContent = resource.title;
+          card.querySelector(".section-resource-description").textContent = resource.description;
+          resourceList.append(card);
+        });
+    } catch (error) {
+      console.warn("No se pudieron cargar los recursos publicados.", error);
+    }
+  };
+
+  await appendPublishedResources();
+
   const heading = document.querySelector("[data-section-list-heading]");
   const resourceList = document.querySelector("[data-section-resource-list]");
   const sectionLinks = [...document.querySelectorAll("[data-section-link]")];

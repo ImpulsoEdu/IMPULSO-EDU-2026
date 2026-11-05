@@ -6,6 +6,7 @@
   const submitMessage = document.querySelector("[data-submit-message]");
   const subjectSelect = document.querySelector("#subject");
   const sectionSelect = document.querySelector("#section");
+  const adminKeyInput = document.querySelector("#admin-key");
 
   const fallbackSectionsBySubject = {
     Matemática: [
@@ -15,7 +16,7 @@
     ],
     Física: ["M.R.U.", "M.R.U.V.", "Tiro Vertical", "Caída Libre"],
     Química: ["Tabla Periódica", "Regla del Octeto", "Compuestos Binarios"],
-    "Sistema de Representación": ["Perspectiva Dimetrica", "Proyeción Ortogonal"],
+    "Sistema de Representación": ["Perspectiva Dimetrica", "Proyección Ortogonal"],
   };
   const subjectSources = {
     Matemática: "../materias/Matematica/index.html",
@@ -83,14 +84,43 @@
     sectionSelect.disabled = false;
   });
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const validDrive = validateDriveLink();
     if (!form.checkValidity() || !validDrive) {
       form.reportValidity();
       return;
     }
-    submitMessage.textContent = "Datos validados correctamente. La tarjeta se creará usando este enlace de Google Drive.";
-    submitMessage.hidden = false;
+
+    const submitButton = form.querySelector(".primary-action");
+    submitButton.disabled = true;
+    submitButton.textContent = "Guardando...";
+    submitMessage.hidden = true;
+
+    try {
+      const response = await fetch(window.EDU_REPOSITORY_API_URL || "/api/create-resource", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          subject: subjectSelect.value,
+          section: sectionSelect.value,
+          title: form.title.value,
+          description: form.description.value,
+          difficulty: form.difficulty.value,
+          driveUrl: driveInput.value,
+          adminKey: adminKeyInput.value,
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "No se pudo guardar el recurso.");
+      submitMessage.textContent = "Recurso guardado correctamente en GitHub. La tarjeta aparecerá después de publicar los cambios.";
+    } catch (error) {
+      submitMessage.textContent = error.message;
+      submitMessage.classList.add("form-message-error");
+    } finally {
+      submitMessage.hidden = false;
+      submitButton.disabled = false;
+      submitButton.textContent = "Validar y adjuntar";
+    }
   });
 })();
