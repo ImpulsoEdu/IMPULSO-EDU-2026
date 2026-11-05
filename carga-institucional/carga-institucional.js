@@ -13,6 +13,8 @@
   const createOnlyFields = [...document.querySelectorAll("[data-create-only]")];
   const createOnlyPanel = document.querySelector("[data-create-only-panel]");
   const deleteFields = document.querySelector("[data-delete-fields]");
+  const createCancel = document.querySelector("[data-create-cancel]");
+  const deleteCancel = document.querySelector("[data-delete-cancel]");
   let currentMode = "create";
   let resources = [];
 
@@ -57,13 +59,15 @@
     });
     if (createOnlyPanel) createOnlyPanel.hidden = isDelete;
     if (deleteFields) deleteFields.hidden = !isDelete;
+    if (createCancel) createCancel.hidden = isDelete;
+    if (deleteCancel) deleteCancel.hidden = !isDelete;
     setRequired(
       [resourceToDeleteSelect, deleteAdminKeyInput].filter(Boolean),
       isDelete
     );
     submitMessage.hidden = true;
     const submitButton = form.querySelector(".primary-action");
-    submitButton.textContent = isDelete ? "Eliminar contenido" : "Validar y adjuntar";
+    submitButton.textContent = isDelete ? "Confirmar borrado" : "Validar y adjuntar";
     if (isDelete) {
       driveInput.setCustomValidity("");
       driveError.hidden = true;
@@ -177,6 +181,18 @@
     button.addEventListener("click", () => setMode(button.dataset.mode));
   });
 
+  deleteCancel?.addEventListener("click", () => {
+    form.reset();
+    sectionSelect.replaceChildren(
+      new Option("Selecciona una sección", "", true, true)
+    );
+    sectionSelect.disabled = true;
+    resourceToDeleteSelect.replaceChildren(
+      new Option("Selecciona primero materia y sección", "", true, true)
+    );
+    setMode("create");
+  });
+
   const submitCreate = async () => {
     const response = await fetch(window.EDU_REPOSITORY_API_URL || "/api/create-resource", {
       method: "POST",
@@ -236,7 +252,7 @@
     } finally {
       submitMessage.hidden = false;
       submitButton.disabled = false;
-      submitButton.textContent = currentMode === "delete" ? "Eliminar contenido" : "Validar y adjuntar";
+      submitButton.textContent = currentMode === "delete" ? "Confirmar borrado" : "Validar y adjuntar";
     }
   });
 

@@ -49,6 +49,7 @@ input::placeholder, textarea::placeholder { color: #98948b; }
 .form-actions { display: flex; align-items: center; justify-content: flex-end; gap: 14px; margin-top: 34px; }
 .secondary-action, .primary-action { padding: 12px 18px; border-radius: 8px; font-size: 13px; text-decoration: none; cursor: pointer; }
 .secondary-action { color: #595650; border: 1px solid #c8c4ba; }
+.delete-cancel { background: transparent; }
 .primary-action { border: 1px solid #248f8d; background: #248f8d; color: #fff; }
 .primary-action:hover { background: #176f6c; }
 .submit-message { margin-top: 14px; color: #19736f; text-align: right; font-size: 12px; }
