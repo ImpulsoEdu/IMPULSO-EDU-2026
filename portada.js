@@ -83,7 +83,7 @@
   const revealCards = revealPage
     ? [
         ...revealPage.querySelectorAll(
-          ".subject-card, .subject-card2, .subject-card3, .subject-card4"
+          ".subject-card, .subject-card2, .subject-card3, .subject-card4, .institutional-entry, .social-card"
         ),
       ]
     : [];

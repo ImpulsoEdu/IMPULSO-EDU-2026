@@ -862,6 +862,34 @@ html {
   }
 }
 
+/* Reuse the subject-card entrance bounce for the institutional entry and the
+   social cards on every portada variant. */
+@media (prefers-reduced-motion: no-preference) {
+  :is(.portada-m-vil-claro, .portada-tablet-claro, .portada-escritorio-claro,
+      .repositorio-digital-educativo-mobile, .repositorio-digital-educativo-tablet)
+    :is(.institutional-entry, .social-card).card-reveal:not(.is-in-view) {
+    opacity: 0;
+  }
+
+  :is(.portada-m-vil-claro, .portada-tablet-claro, .portada-escritorio-claro,
+      .repositorio-digital-educativo-mobile, .repositorio-digital-educativo-tablet)
+    :is(.institutional-entry, .social-card).card-reveal.is-in-view {
+    animation: rebote-creciente 680ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.portada-m-vil-claro, .portada-tablet-claro, .portada-escritorio-claro,
+      .repositorio-digital-educativo-mobile, .repositorio-digital-educativo-tablet)
+    :is(.institutional-entry, .social-card).card-reveal:not(.is-in-view),
+  :is(.portada-m-vil-claro, .portada-tablet-claro, .portada-escritorio-claro,
+      .repositorio-digital-educativo-mobile, .repositorio-digital-educativo-tablet)
+    :is(.institutional-entry, .social-card).card-reveal.is-in-view {
+    opacity: 1;
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .subject-detail .section-resource-card.card-reveal:not(.is-in-view) {
     opacity: 0;
