@@ -15,7 +15,7 @@
     ],
     Física: ["M.R.U.", "M.R.U.V.", "Tiro Vertical", "Caída Libre"],
     Química: ["Tabla Periódica", "Regla del Octeto", "Compuestos Binarios"],
-    "Sistema de Representación": ["Perspectiva Dimetrica", "Historia Regional"],
+    "Sistema de Representación": ["Perspectiva Dimetrica", "Proyeción Ortogonal"],
   };
 
   const isGoogleDriveUrl = (value) => {
