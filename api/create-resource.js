@@ -1,11 +1,13 @@
 const GITHUB_API = "https://api.github.com";
 
-const respond = (response, statusCode, body) => response.status(statusCode).set({
-    "Content-Type": "application/json; charset=utf-8",
-    "Access-Control-Allow-Origin": process.env.ALLOWED_ORIGIN || "*",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-  }).json(body);
+const respond = (response, statusCode, body) => {
+  response.statusCode = statusCode;
+  response.setHeader("Content-Type", "application/json; charset=utf-8");
+  response.setHeader("Access-Control-Allow-Origin", process.env.ALLOWED_ORIGIN || "*");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  response.end(JSON.stringify(body));
+};
 
 const isDriveUrl = (value) => {
   try {
