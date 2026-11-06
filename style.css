@@ -714,6 +714,13 @@
   height: 37px;
   position: relative;
 }
+.quimica-card-icon {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  position: relative;
+}
 .quimica {
   color: #ffffff;
   text-align: left;
@@ -1106,6 +1113,13 @@
   font-size: 28px;
   line-height: 28px;
   font-weight: 400;
+  position: relative;
+}
+.matematica-card-icon {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
   position: relative;
 }
 .matem-ticas {

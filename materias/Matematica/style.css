@@ -187,6 +187,13 @@
   height: 55px;
   position: relative;
 }
+.matematica-detail-icon {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  position: relative;
+}
 .matem-ticas2 {
   color: #ffffff;
   text-align: left;

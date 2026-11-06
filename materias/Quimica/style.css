@@ -187,6 +187,13 @@
   height: 55px;
   position: relative;
 }
+.quimica-detail-icon {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  position: relative;
+}
 .quimica2 {
   color: #ffffff;
   text-align: left;
