@@ -28,5 +28,15 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1-Aq3iyi75k3wL1qv_6iQXKFkaZwIgGL3/view?usp=drive_link",
     "createdAt": "2026-11-05T07:18:37.129Z"
+  },
+  {
+    "id": "4c3f3bad-64ec-448e-8c8b-68def46cb364",
+    "subject": "Química",
+    "section": "Tabla Periódica",
+    "title": "Tabla Periodica",
+    "description": "Representación de la Tabla Periódica de química",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1CkN2nJ61MZMOCZM39N_DX6bU0oIKIK3t/view?usp=drive_link",
+    "createdAt": "2026-11-06T02:21:30.394Z"
   }
 ]
