@@ -177,6 +177,13 @@
   font-weight: 400;
   position: relative;
 }
+.fisica-detail-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  position: relative;
+}
 .heading-1 {
   padding: 8px 0px 0px 0px;
   display: flex;
