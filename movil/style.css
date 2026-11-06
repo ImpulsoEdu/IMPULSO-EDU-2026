@@ -874,6 +874,13 @@
   font-weight: 400;
   position: relative;
 }
+.fisica-card-icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  position: relative;
+}
 .fisica {
   color: #f5f4f0;
   text-align: left;
