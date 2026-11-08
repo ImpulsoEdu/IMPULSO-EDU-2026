@@ -166,7 +166,12 @@
   color: #fef08a;
 }
 
-[data-theme-page].tema-oscuro .section-resource-level--moderate,
+[data-theme-page].tema-oscuro .section-resource-level--moderate {
+  border-color: #facc15;
+  background: #713f12;
+  color: #fef08a;
+}
+
 [data-theme-page].tema-oscuro .section-resource-level--advanced {
   border-color: #f87171;
   background: #7f1d1d;

@@ -28,7 +28,7 @@
   const difficultyClasses = {
     "fácil": "section-resource-level--easy",
     intermedio: "section-resource-level--intermediate",
-    moderado: "section-resource-level--advanced",
+    moderado: "section-resource-level--moderate",
     avanzado: "section-resource-level--advanced",
   };
 

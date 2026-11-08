@@ -45,6 +45,9 @@ module.exports = async (request, response) => {
   if (!["documento", "video", "imagen"].includes(String(body.contentType).trim().toLowerCase())) {
     return respond(response, 400, { error: "El tipo de contenido no es válido." });
   }
+  if (!["fácil", "moderado", "avanzado"].includes(String(body.difficulty).trim().toLowerCase())) {
+    return respond(response, 400, { error: "La dificultad no es válida." });
+  }
   if (!isDriveUrl(body.driveUrl)) return respond(response, 400, { error: "El enlace no pertenece a Google Drive." });
 
   const headers = {
