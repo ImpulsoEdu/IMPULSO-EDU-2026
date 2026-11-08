@@ -2,24 +2,24 @@
 
 .sistemas-representacion-card-icon {
   display: block;
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  position: relative;
-}
-
-.sistemas-representacion-detail-icon {
-  display: block;
   width: 56px;
   height: 56px;
   object-fit: contain;
   position: relative;
 }
 
+.sistemas-representacion-detail-icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  position: relative;
+}
+
 :is(.portada-m-vil-claro, .repositorio-digital-educativo-mobile)
   .sistemas-representacion-card-icon {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
 }
 
 :where(html, body, body *) {
