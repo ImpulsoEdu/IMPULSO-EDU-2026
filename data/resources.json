@@ -42,5 +42,16 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1QSsqfE9BpmeF42U7vkzP-QCSz0nwT_V0/view?usp=drive_link",
     "createdAt": "2026-11-08T19:43:17.695Z"
+  },
+  {
+    "id": "fc6e903a-9446-43c7-abf1-38779787b1bb",
+    "subject": "Química",
+    "section": "Estructura de Lewis",
+    "title": "Como entender la Estructura de Lewis",
+    "description": "¡Material audiovisual para entender el tema!",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1C2WZmtADojQu7DElDMR1lh4LXPkhQ8Nv/view?usp=drive_link",
+    "createdAt": "2026-11-08T21:41:33.073Z"
   }
 ]
