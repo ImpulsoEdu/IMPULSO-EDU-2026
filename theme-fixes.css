@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 
 .sistemas-representacion-card-icon {
-  display: block;
-  width: 42px;
-  height: 42px;
+  display: block !important;
+  width: 42px !important;
+  height: 42px !important;
   object-fit: contain;
-  position: relative;
+  position: relative !important;
+  z-index: 3 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .sistemas-representacion-detail-icon {
@@ -18,8 +21,8 @@
 
 :is(.portada-m-vil-claro, .repositorio-digital-educativo-mobile)
   .sistemas-representacion-card-icon {
-  width: 36px;
-  height: 36px;
+  width: 36px !important;
+  height: 36px !important;
 }
 
 :where(html, body, body *) {
