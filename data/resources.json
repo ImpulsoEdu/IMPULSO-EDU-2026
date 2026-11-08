@@ -75,5 +75,16 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1mFUFe1385OKrTcr9d8bqWIsRJurP3qPg/view?usp=drive_link",
     "createdAt": "2026-11-08T22:07:44.003Z"
+  },
+  {
+    "id": "0e98671e-752f-4310-b21f-3f65ed935637",
+    "subject": "Matemática",
+    "section": "Operaciones combinadas",
+    "title": "Operaciones Combinadas",
+    "description": "¡Este video te ayudará a entender con claridad este tema!",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1nl8_4ZHWXeA_P4uIGXbUylNxghb7Tkm_/view?usp=drive_link",
+    "createdAt": "2026-11-08T22:10:00.407Z"
   }
 ]
