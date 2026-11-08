@@ -6,7 +6,6 @@
   height: 42px;
   object-fit: contain;
   position: relative;
-  mix-blend-mode: multiply;
 }
 
 .sistemas-representacion-detail-icon {
@@ -15,13 +14,6 @@
   height: 56px;
   object-fit: contain;
   position: relative;
-  mix-blend-mode: multiply;
-}
-
-[data-theme-page].tema-oscuro .sistemas-representacion-card-icon,
-[data-theme-page].tema-oscuro .sistemas-representacion-detail-icon {
-  filter: invert(1);
-  mix-blend-mode: screen;
 }
 
 :where(html, body, body *) {
