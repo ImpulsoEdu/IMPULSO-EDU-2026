@@ -95,14 +95,6 @@
   const sections = new Map(
     sectionLinks.map((link) => [link.dataset.sectionLink, getSectionTitle(link)])
   );
-  const assignLegacyResourcesToFirstSection = () => {
-    const firstSection = sectionLinks[0]?.dataset.sectionLink;
-    if (!firstSection) return;
-    resourceList.querySelectorAll(".resource-card, .resource-card2").forEach((card) => {
-      if (!card.dataset.section) card.dataset.section = firstSection;
-    });
-  };
-  assignLegacyResourcesToFirstSection();
   const params = new URLSearchParams(window.location.search);
   const requestedSection =
     params.get("seccion") ?? sectionLinks[0].dataset.sectionLink;
@@ -203,7 +195,6 @@
   const refreshResources = async () => {
     if (document.hidden) return;
     await appendPublishedResources();
-    assignLegacyResourcesToFirstSection();
     cards = [...resourceList.querySelectorAll(".resource-card, .resource-card2")].filter((card) => {
       if (sections.has(card.dataset.section)) {
         card.classList.add("section-resource-card");

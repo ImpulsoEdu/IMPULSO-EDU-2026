@@ -181,7 +181,7 @@
             const html = await response.text();
             const subjectDocument = new DOMParser().parseFromString(html, "text/html");
             const resources = subjectDocument.querySelectorAll(
-              "[data-section-resource-list] .resource-card, [data-section-resource-list] .resource-card2"
+              "[data-section-resource-list] [data-section]"
             ).length;
             const sections = subjectDocument.querySelectorAll("[data-section-link]").length;
             return { card, resources, sections };
