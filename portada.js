@@ -124,6 +124,11 @@
   const subjectMetrics = new Map();
   let metricsLoaded = false;
 
+  const getResourcesPath = () =>
+    /\/(?:movil|tablet)\/?$/.test(window.location.pathname)
+      ? "../data/resources.json"
+      : "data/resources.json";
+
   const subjectNames = {
     Matematica: "Matemática",
     Fisica: "Física",
@@ -176,13 +181,13 @@
             const html = await response.text();
             const subjectDocument = new DOMParser().parseFromString(html, "text/html");
             const resources = subjectDocument.querySelectorAll(
-              "[data-section-resource-list] [data-section]"
+              "[data-section-resource-list] .resource-card, [data-section-resource-list] .resource-card2"
             ).length;
             const sections = subjectDocument.querySelectorAll("[data-section-link]").length;
             return { card, resources, sections };
           })
         ),
-        fetch("data/resources.json", { cache: "no-store" }),
+        fetch(getResourcesPath(), { cache: "no-store" }),
       ]);
 
       let publishedResources = [];
@@ -239,5 +244,13 @@
 
   if (subjectCards.length > 0) {
     void loadSubjectMetrics();
+
+    const refreshMetrics = () => {
+      if (!document.hidden) void loadSubjectMetrics();
+    };
+
+    document.addEventListener("visibilitychange", refreshMetrics);
+    window.addEventListener("focus", refreshMetrics);
+    window.setInterval(refreshMetrics, 30000);
   }
 })();

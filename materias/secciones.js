@@ -32,8 +32,15 @@
       const sectionSlugs = new Map(
         sectionLinks.map((link) => [getLinkTitle(link), link.dataset.sectionLink])
       );
-      resources
-        .filter((resource) => resource.subject === ({ Matematica: "Matemática", Fisica: "Física", Quimica: "Química", SisDeRepr: "Sistema de Representación" }[subject]))
+      const subjectName = ({ Matematica: "Matemática", Fisica: "Física", Quimica: "Química", SisDeRepr: "Sistema de Representación" }[subject]);
+      const publishedResources = resources.filter((resource) => resource.subject === subjectName);
+      const publishedIds = new Set(publishedResources.map((resource) => String(resource.id)));
+
+      resourceList.querySelectorAll("[data-resource-id]").forEach((card) => {
+        if (!publishedIds.has(String(card.dataset.resourceId))) card.remove();
+      });
+
+      publishedResources
         .forEach((resource) => {
           const sectionSlug = sectionSlugs.get(resource.section);
           if (!sectionSlug || resourceList.querySelector(`[data-resource-id="${resource.id}"]`)) return;
@@ -88,13 +95,21 @@
   const sections = new Map(
     sectionLinks.map((link) => [link.dataset.sectionLink, getSectionTitle(link)])
   );
+  const assignLegacyResourcesToFirstSection = () => {
+    const firstSection = sectionLinks[0]?.dataset.sectionLink;
+    if (!firstSection) return;
+    resourceList.querySelectorAll(".resource-card, .resource-card2").forEach((card) => {
+      if (!card.dataset.section) card.dataset.section = firstSection;
+    });
+  };
+  assignLegacyResourcesToFirstSection();
   const params = new URLSearchParams(window.location.search);
   const requestedSection =
     params.get("seccion") ?? sectionLinks[0].dataset.sectionLink;
   const sectionTitle = sections.get(requestedSection);
   const normalize = (value) =>
     value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  const cards = [
+  let cards = [
     ...resourceList.querySelectorAll(".resource-card, .resource-card2"),
   ].filter((card) => {
     if (sections.has(card.dataset.section)) {
@@ -184,6 +199,26 @@
 
   searchInput?.addEventListener("input", updateResources);
   updateResources();
+
+  const refreshResources = async () => {
+    if (document.hidden) return;
+    await appendPublishedResources();
+    assignLegacyResourcesToFirstSection();
+    cards = [...resourceList.querySelectorAll(".resource-card, .resource-card2")].filter((card) => {
+      if (sections.has(card.dataset.section)) {
+        card.classList.add("section-resource-card");
+        return true;
+      }
+      card.remove();
+      return false;
+    });
+    cards.forEach((card) => card.classList.add("is-in-view"));
+    updateResources();
+  };
+
+  document.addEventListener("visibilitychange", refreshResources);
+  window.addEventListener("focus", refreshResources);
+  window.setInterval(refreshResources, 30000);
 
   document.title = sectionTitle
     ? `${sectionTitle} | Repositorio Educativo`
