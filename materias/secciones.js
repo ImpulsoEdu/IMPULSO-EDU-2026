@@ -60,7 +60,7 @@
   };
 
   const getContentIcon = (icon) => {
-    if (icon === "video") return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5V7Z"/><rect x="3" y="5" width="14" height="14" rx="2"/></svg>';
+    if (icon === "video") return '<img class="section-video-icon" src="icon-video0.svg" alt="">';
     if (icon === "image") return '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m4 17 5-5 3 3 2-2 6 6"/></svg>';
     return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>';
   };
