@@ -77,7 +77,7 @@
 
 .section-resource-meta {
   align-self: stretch;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
 }
 
