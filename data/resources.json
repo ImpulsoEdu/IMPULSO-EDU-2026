@@ -143,17 +143,6 @@
     "createdAt": "2026-01-01T00:00:00.000Z"
   },
   {
-    "id": "legacy-matematica-ecuacion-lineal-3",
-    "subject": "Matemática",
-    "section": "Ecuación y función lineal",
-    "title": "Ecuación lineal 3",
-    "description": "Video explicativo sobre ecuaciones lineales.",
-    "contentType": "video",
-    "difficulty": "Moderado",
-    "driveUrl": "https://drive.google.com/file/d/1Ykg0yF8ymrzn3EkwbFxLZYLvfPO9W52M/view?usp=drive_link",
-    "createdAt": "2026-01-01T00:00:00.000Z"
-  },
-  {
     "id": "legacy-fisica-mruv",
     "subject": "Física",
     "section": "M.R.U.V.",
