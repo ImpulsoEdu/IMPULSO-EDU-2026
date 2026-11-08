@@ -144,6 +144,29 @@
   const sections = new Map(
     sectionLinks.map((link) => [link.dataset.sectionLink, getSectionTitle(link)])
   );
+  const baseSectionLink = sectionLinks.find(
+    (link) => link.dataset.sectionLink === "contenidos-bases"
+  );
+  if (baseSectionLink) {
+    const firstSectionLink = sectionLinks[0];
+    const baseWrapper = baseSectionLink.parentElement;
+    const firstWrapper = firstSectionLink?.parentElement;
+    if (baseWrapper && firstWrapper && firstWrapper !== baseWrapper) {
+      const navigation = firstWrapper.parentElement;
+      navigation?.insertBefore(baseWrapper, firstWrapper);
+      baseWrapper.classList.remove("button-margin2");
+      baseWrapper.classList.add("button-margin");
+      baseSectionLink.classList.remove("button3");
+      baseSectionLink.classList.add("button2");
+
+      const baseLabel = baseSectionLink.querySelector(":scope > div:not(.text2):not(.text3)");
+      const firstLabel = firstSectionLink.querySelector(":scope > div:not(.text2):not(.text3)");
+      const baseCount = baseSectionLink.querySelector(":scope > .text2 > div, :scope > .text3 > div");
+      const firstCount = firstSectionLink.querySelector(":scope > .text2 > div, :scope > .text3 > div");
+      if (baseLabel && firstLabel) baseLabel.className = firstLabel.className;
+      if (baseCount && firstCount) baseCount.className = firstCount.className;
+    }
+  }
   const params = new URLSearchParams(window.location.search);
   const requestedSection =
     params.get("seccion") ?? sectionLinks[0].dataset.sectionLink;
