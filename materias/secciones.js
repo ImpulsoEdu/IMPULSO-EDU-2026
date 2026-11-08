@@ -154,6 +154,9 @@
     const baseWrapper = baseSectionLink.parentElement;
     const firstWrapper = firstSectionLink?.parentElement;
     baseWrapper?.classList.add("section-base-separator");
+    if (baseSectionLink.dataset.sectionLink === "tabla-periodica") {
+      baseWrapper?.classList.add("section-base-separator--chemistry");
+    }
     if (baseWrapper && firstWrapper && firstWrapper !== baseWrapper) {
       const navigation = firstWrapper.parentElement;
       navigation?.insertBefore(baseWrapper, firstWrapper);

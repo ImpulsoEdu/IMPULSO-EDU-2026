@@ -35,6 +35,10 @@
   margin-bottom: 8px !important;
 }
 
+.section-base-separator--chemistry {
+  margin-bottom: 16px !important;
+}
+
 .section-back-link {
   display: inline-block;
   margin-top: 8px;
