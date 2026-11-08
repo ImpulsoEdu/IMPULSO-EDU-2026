@@ -151,6 +151,7 @@
     const firstSectionLink = sectionLinks[0];
     const baseWrapper = baseSectionLink.parentElement;
     const firstWrapper = firstSectionLink?.parentElement;
+    baseWrapper?.classList.add("section-base-separator");
     if (baseWrapper && firstWrapper && firstWrapper !== baseWrapper) {
       const navigation = firstWrapper.parentElement;
       navigation?.insertBefore(baseWrapper, firstWrapper);
