@@ -25,7 +25,7 @@
       "Ecuación y función cuadratica",
     ],
     Física: ["M.R.U.", "M.R.U.V.", "Tiro Vertical", "Caída Libre"],
-    Química: ["Tabla Periódica", "Regla del Octeto", "Compuestos Binarios"],
+    Química: ["Tabla Periódica", "Regla del Octeto", "Estructura de Lewis"],
     "Sistema de Representación": ["Perspectiva Dimetrica", "Proyección Ortogonal"],
   };
   const subjectSources = {
