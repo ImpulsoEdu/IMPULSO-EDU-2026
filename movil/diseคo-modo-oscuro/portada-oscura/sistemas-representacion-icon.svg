@@ -2,5 +2,5 @@
   <filter id="teal-logo" color-interpolation-filters="sRGB">
     <feColorMatrix values="0 0 0 0 0.3804  0 0 0 0 0.6784  0 0 0 0 0.6275  -0.3333 -0.3333 -0.3333 0 1" />
   </filter>
-  <image href="sistemas-representacion-original.png" x="-80" y="-95" width="768" height="768" filter="url(#teal-logo)" />
+  <image href="sistemas-representacion-original.png" x="0" y="0" width="768" height="768" filter="url(#teal-logo)" />
 </svg>
