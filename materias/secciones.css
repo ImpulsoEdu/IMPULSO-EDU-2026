@@ -82,7 +82,11 @@
 }
 
 .section-resource-type {
+  width: fit-content;
   gap: 8px;
+  border: 1px solid #7c3aed;
+  padding: 2px 8px;
+  background: #f3e8ff;
   color: #7c3aed;
   font-family: "JetBrainsMono-Medium", sans-serif;
   font-size: 11px;
@@ -176,6 +180,12 @@
   border-color: #f87171;
   background: #7f1d1d;
   color: #fecaca;
+}
+
+[data-theme-page].tema-oscuro .section-resource-type {
+  border-color: #c4b5fd;
+  background: #3b0764;
+  color: #ddd6fe;
 }
 
 .section-resource-title {

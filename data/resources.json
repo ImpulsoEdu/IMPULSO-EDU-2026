@@ -5,6 +5,7 @@
     "section": "Proyección Ortogonal",
     "title": "Proyección Ortogonal",
     "description": "¡Material audiovisual para entender correctamente este tema!",
+    "contentType": "video",
     "difficulty": "Moderado",
     "driveUrl": "https://drive.google.com/file/d/1u3PIOXsO3W2RqH0GzFYxwBlXFutpkP9R/view?usp=drive_link",
     "createdAt": "2026-11-05T06:59:15.413Z"
@@ -15,6 +16,7 @@
     "section": "Perspectiva Dimetrica",
     "title": "Perspectiva Ejemplo 1",
     "description": "Introducción a las perspectivas disimétricas",
+    "contentType": "video",
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1ijrFj9P-s8uLiSrqrFXLReNEVZl0XBXE/view?usp=drive_link",
     "createdAt": "2026-11-05T07:06:43.116Z"
@@ -25,6 +27,7 @@
     "section": "Perspectiva Dimetrica",
     "title": "Perspectiva Ejemplo 2",
     "description": "Continuación del material audiovisual \"Perspectiva\".",
+    "contentType": "video",
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1-Aq3iyi75k3wL1qv_6iQXKFkaZwIgGL3/view?usp=drive_link",
     "createdAt": "2026-11-05T07:18:37.129Z"
@@ -35,6 +38,7 @@
     "section": "Regla del Octeto",
     "title": "Regla del Octeto",
     "description": "video orientado a cómo entender la regla del octeto en química.",
+    "contentType": "video",
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1QSsqfE9BpmeF42U7vkzP-QCSz0nwT_V0/view?usp=drive_link",
     "createdAt": "2026-11-08T19:43:17.695Z"
