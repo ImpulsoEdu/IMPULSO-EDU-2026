@@ -53,5 +53,16 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1C2WZmtADojQu7DElDMR1lh4LXPkhQ8Nv/view?usp=drive_link",
     "createdAt": "2026-11-08T21:41:33.073Z"
+  },
+  {
+    "id": "c6a13dae-b191-4dcd-abf6-63e9c2764a19",
+    "subject": "Química",
+    "section": "Estructura de Lewis",
+    "title": "Estructura de Lewis - 2da Parte",
+    "description": "Segunda parte del material audiovisual respecto al tema.",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1DF0D0j5xYG8Ow-RLAuBWdvczRmp7TG_9/view?usp=drive_link",
+    "createdAt": "2026-11-08T21:53:58.759Z"
   }
 ]
