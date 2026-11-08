@@ -38,6 +38,25 @@
 
   const resourcesPath = "../data/resources.json";
 
+  const normalize = (value) =>
+    String(value ?? "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim()
+      .toLowerCase();
+
+  const sectionAliases = {
+    Química: {
+      "Contenidos Bases": ["Contenidos Bases", "Tabla Periódica"],
+    },
+  };
+
+  const resourceBelongsToSection = (resource, subject, section) => {
+    if (normalize(resource.subject) !== normalize(subject)) return false;
+    const aliases = sectionAliases[subject]?.[section] ?? [section];
+    return aliases.some((alias) => normalize(resource.section) === normalize(alias));
+  };
+
   const setRequired = (elements, required) => {
     elements.forEach((element) => {
       element.required = required;
@@ -102,8 +121,8 @@
     await loadResources();
     const selectedSubject = subjectSelect.value;
     const selectedSection = sectionSelect.value;
-    const matches = resources.filter(
-      (resource) => resource.subject === selectedSubject && resource.section === selectedSection
+    const matches = resources.filter((resource) =>
+      resourceBelongsToSection(resource, selectedSubject, selectedSection)
     );
     resourceToDeleteSelect.replaceChildren(
       new Option(
