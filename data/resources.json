@@ -97,5 +97,16 @@
     "difficulty": "Moderado",
     "driveUrl": "https://drive.google.com/file/d/1zGysEvWgrUZBx20mASLz6XsDZED6maTd/view?usp=drive_link",
     "createdAt": "2026-11-08T22:12:08.806Z"
+  },
+  {
+    "id": "5a40f45b-23ed-410c-8d16-1e27cfc6c517",
+    "subject": "Matemática",
+    "section": "Ecuación y función cuadratica",
+    "title": "Función Cuadrática",
+    "description": "Material audiovisual del tema de función cuadrática.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1fcxjquBk9saNYpVW9HinS6diJhqd-IX_/view?usp=drive_link",
+    "createdAt": "2026-11-08T22:15:22.430Z"
   }
 ]
