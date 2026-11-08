@@ -28,5 +28,15 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1-Aq3iyi75k3wL1qv_6iQXKFkaZwIgGL3/view?usp=drive_link",
     "createdAt": "2026-11-05T07:18:37.129Z"
+  },
+  {
+    "id": "d8bbed1b-63b2-4d41-860c-61d3a0701af3",
+    "subject": "Química",
+    "section": "Regla del Octeto",
+    "title": "Regla del Octeto",
+    "description": "video orientado a cómo entender la regla del octeto en química.",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1QSsqfE9BpmeF42U7vkzP-QCSz0nwT_V0/view?usp=drive_link",
+    "createdAt": "2026-11-08T19:43:17.695Z"
   }
 ]
