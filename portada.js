@@ -180,11 +180,12 @@
             }
             const html = await response.text();
             const subjectDocument = new DOMParser().parseFromString(html, "text/html");
-            const resources = subjectDocument.querySelectorAll(
+            const staticResourceUrls = [...subjectDocument.querySelectorAll(
               "[data-section-resource-list] [data-section]"
-            ).length;
+            )].map((resource) => resource.href);
+            const resources = staticResourceUrls.length;
             const sections = subjectDocument.querySelectorAll("[data-section-link]").length;
-            return { card, resources, sections };
+            return { card, resources, staticResourceUrls, sections };
           })
         ),
         fetch(getResourcesPath(), { cache: "no-store" }),
@@ -196,12 +197,15 @@
         if (Array.isArray(parsedResources)) publishedResources = parsedResources;
       }
 
-      metrics.forEach(({ card, resources, sections }) => {
+      metrics.forEach(({ card, resources, staticResourceUrls, sections }) => {
         const subject = subjectNames[getSubjectKey(card)];
-        const publishedCount = publishedResources.filter(
+        const subjectResources = publishedResources.filter(
           (resource) => resource.subject === subject
+        );
+        const overlapCount = subjectResources.filter((resource) =>
+          staticResourceUrls.includes(resource.driveUrl)
         ).length;
-        const totalResources = resources + publishedCount;
+        const totalResources = resources + subjectResources.length - overlapCount;
         const count = card.querySelector("[data-subject-resource-count]");
         if (count) count.textContent = String(totalResources);
         subjectMetrics.set(card, { resources: totalResources, sections });

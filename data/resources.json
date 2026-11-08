@@ -108,5 +108,115 @@
     "difficulty": "Moderado",
     "driveUrl": "https://drive.google.com/file/d/1fcxjquBk9saNYpVW9HinS6diJhqd-IX_/view?usp=drive_link",
     "createdAt": "2026-11-08T22:15:22.430Z"
+  },
+  {
+    "id": "legacy-matematica-funcion-lineal",
+    "subject": "Matemática",
+    "section": "Ecuación y función lineal",
+    "title": "Función lineal",
+    "description": "¡Video explicativo que te ayudará a comprender con claridad este tema!",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1iN4TMfOBFnSksTS1G1Mk9rhp2fhijvdz/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "legacy-matematica-ecuacion-lineal-1",
+    "subject": "Matemática",
+    "section": "Ecuación y función lineal",
+    "title": "Ecuación lineal 1",
+    "description": "Video explicativo sobre ecuaciones lineales.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1WyOYf9bMthqpksNXbdvp23Gw9bSPWA0v/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "legacy-matematica-ecuacion-lineal-2",
+    "subject": "Matemática",
+    "section": "Ecuación y función lineal",
+    "title": "Ecuación lineal 2",
+    "description": "Video explicativo sobre ecuaciones lineales.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/19a3gVFvUBKWm1pelf6b3Cm-2ngjT46x7/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "legacy-matematica-ecuacion-lineal-3",
+    "subject": "Matemática",
+    "section": "Ecuación y función lineal",
+    "title": "Ecuación lineal 3",
+    "description": "Video explicativo sobre ecuaciones lineales.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1Ykg0yF8ymrzn3EkwbFxLZYLvfPO9W52M/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "legacy-fisica-mruv",
+    "subject": "Física",
+    "section": "M.R.U.V.",
+    "title": "Movimiento Rectilineo Uniformemente Variado",
+    "description": "Material audiovisual orientativo del tema.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/19YKVU7LEN5kATa0EJZTEtHfrOQ63a7oM/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "legacy-fisica-tiro-vertical",
+    "subject": "Física",
+    "section": "Tiro Vertical",
+    "title": "Tiro vertical",
+    "description": "Material audiovisual orientativo del tema.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1mDT4A9K64G5lBDzsmOBio0aJLZDf3WNY/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "legacy-fisica-caida-libre-1",
+    "subject": "Física",
+    "section": "Caída Libre",
+    "title": "Caída Libre (1ra parte)",
+    "description": "Material audiovisual orientativo del tema.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1AZ6MTobkoLORHo2fAknfAfwMiWlDCFOY/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "legacy-fisica-caida-libre-2",
+    "subject": "Física",
+    "section": "Caída Libre",
+    "title": "Caída Libre (2da parte)",
+    "description": "Material audiovisual orientativo del tema.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1mJtPJvZgASVgOLFR7uejaaTTE5THQ5MB/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "legacy-quimica-tabla-periodica",
+    "subject": "Química",
+    "section": "Contenidos Bases",
+    "title": "Uso de la Tabla Periodica",
+    "description": "¡Este video te ayudara a usar a la perfeccion la Tabla Periodica!",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1CkN2nJ61MZMOCZM39N_DX6bU0oIKIK3t/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "legacy-sis-perspectivas",
+    "subject": "Sistema de Representación",
+    "section": "Perspectiva Dimetrica",
+    "title": "Ejemplos de Perspectivas",
+    "description": "Material de estudio sobre perspectiva dimétrica.",
+    "contentType": "video",
+    "difficulty": "Intermedio",
+    "driveUrl": "https://drive.google.com/file/d/1ExXOpinQH_dFym-iTbvsEomCRon-TbiF/view?usp=drive_link",
+    "createdAt": "2026-01-01T00:00:00.000Z"
   }
 ]

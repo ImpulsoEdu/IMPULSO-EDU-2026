@@ -82,6 +82,10 @@
       const publishedResources = resources.filter((resource) => resource.subject === subjectName);
       const publishedIds = new Set(publishedResources.map((resource) => String(resource.id)));
 
+      resourceList
+        .querySelectorAll(".section-resource-card:not([data-resource-id])")
+        .forEach((card) => card.remove());
+
       resourceList.querySelectorAll("[data-resource-id]").forEach((card) => {
         if (!publishedIds.has(String(card.dataset.resourceId))) card.remove();
       });
