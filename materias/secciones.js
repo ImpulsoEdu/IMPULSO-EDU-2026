@@ -19,6 +19,52 @@
     return title.textContent.trim();
   };
 
+  const contentTypes = {
+    documento: { label: "Documento", icon: "document" },
+    video: { label: "Video", icon: "video" },
+    imagen: { label: "Imagen", icon: "image" },
+  };
+
+  const difficultyClasses = {
+    "fácil": "section-resource-level--easy",
+    intermedio: "section-resource-level--intermediate",
+    moderado: "section-resource-level--advanced",
+    avanzado: "section-resource-level--advanced",
+  };
+
+  const getContentType = (value) => contentTypes[String(value).toLowerCase()] ?? contentTypes.documento;
+  const getDifficultyClass = (value) => difficultyClasses[String(value).toLowerCase()] ?? "section-resource-level--moderate";
+
+  const normalizeLegacyLabels = (root) => {
+    root.querySelectorAll(".section-resource-level").forEach((level) => {
+      level.classList.remove(
+        "section-resource-level--easy",
+        "section-resource-level--intermediate",
+        "section-resource-level--advanced",
+        "section-resource-level--moderate"
+      );
+      level.classList.add(getDifficultyClass(level.textContent));
+    });
+    root.querySelectorAll(".section-resource-type").forEach((type) => {
+      const label = type.querySelector("span:last-child");
+      if (!label) return;
+      const value = label.textContent.trim().toLowerCase();
+      if (value === "pdf" || value === "google drive" || value === "material") {
+        label.textContent = "Documento";
+      } else if (value === "video") {
+        label.textContent = "Video";
+      } else if (value === "imagen" || value === "image") {
+        label.textContent = "Imagen";
+      }
+    });
+  };
+
+  const getContentIcon = (icon) => {
+    if (icon === "video") return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5V7Z"/><rect x="3" y="5" width="14" height="14" rx="2"/></svg>';
+    if (icon === "image") return '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m4 17 5-5 3 3 2-2 6 6"/></svg>';
+    return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>';
+  };
+
   const appendPublishedResources = async () => {
     try {
       const response = await fetch(getResourceDataPath(), { cache: "no-store" });
@@ -52,13 +98,16 @@
           card.target = "_blank";
           card.rel = "noopener noreferrer";
           card.setAttribute("aria-label", `Ver recurso: ${resource.title}`);
+          const contentType = getContentType(resource.contentType);
+          const difficultyClass = getDifficultyClass(resource.difficulty);
           card.innerHTML = `
             <div class="section-resource-meta">
-              <div class="section-resource-type"><span>Google Drive</span></div>
-              <span class="section-resource-level"></span>
+              <div class="section-resource-type"><span class="section-content-icon">${getContentIcon(contentType.icon)}</span><span></span></div>
+              <span class="section-resource-level ${difficultyClass}"></span>
             </div>
             <h3 class="section-resource-title"></h3>
             <p class="section-resource-description"></p>`;
+          card.querySelector(".section-resource-type > span:last-child").textContent = contentType.label;
           card.querySelector(".section-resource-level").textContent = resource.difficulty;
           card.querySelector(".section-resource-title").textContent = resource.title;
           card.querySelector(".section-resource-description").textContent = resource.description;
@@ -111,6 +160,7 @@
     card.remove();
     return false;
   });
+  normalizeLegacyLabels(resourceList);
 
   if ("IntersectionObserver" in window) {
     const cardObserver = new IntersectionObserver(
@@ -204,6 +254,7 @@
       return false;
     });
     cards.forEach((card) => card.classList.add("is-in-view"));
+    normalizeLegacyLabels(resourceList);
     updateResources();
   };
 

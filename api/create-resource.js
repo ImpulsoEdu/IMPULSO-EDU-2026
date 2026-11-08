@@ -38,9 +38,12 @@ module.exports = async (request, response) => {
   const body = typeof request.body === "string" ? JSON.parse(request.body) : request.body || {};
   if (body.adminKey !== ADMIN_API_KEY) return respond(response, 401, { error: "Clave administrativa incorrecta." });
 
-  const requiredFields = ["subject", "section", "title", "description", "difficulty", "driveUrl"];
+  const requiredFields = ["subject", "section", "title", "description", "contentType", "difficulty", "driveUrl"];
   if (requiredFields.some((field) => !String(body[field] || "").trim())) {
     return respond(response, 400, { error: "Faltan datos obligatorios del recurso." });
+  }
+  if (!["documento", "video", "imagen"].includes(String(body.contentType).trim().toLowerCase())) {
+    return respond(response, 400, { error: "El tipo de contenido no es válido." });
   }
   if (!isDriveUrl(body.driveUrl)) return respond(response, 400, { error: "El enlace no pertenece a Google Drive." });
 
@@ -70,6 +73,7 @@ module.exports = async (request, response) => {
       section: String(body.section).trim(),
       title: String(body.title).trim(),
       description: String(body.description).trim(),
+      contentType: String(body.contentType).trim().toLowerCase(),
       difficulty: String(body.difficulty).trim(),
       driveUrl: String(body.driveUrl).trim(),
       createdAt: new Date().toISOString(),

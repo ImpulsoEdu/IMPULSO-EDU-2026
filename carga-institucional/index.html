@@ -58,10 +58,19 @@
           <label for="description">Subtítulo o descripción</label>
           <textarea id="description" name="description" rows="4" placeholder="Describe brevemente qué incluye este contenido." required></textarea>
 
+          <label for="content-type">Tipo de contenido</label>
+          <select id="content-type" name="content-type" required>
+            <option value="" selected disabled>Selecciona un tipo de contenido</option>
+            <option value="documento">Documento</option>
+            <option value="video">Video</option>
+            <option value="imagen">Imagen</option>
+          </select>
+
           <label for="difficulty">Dificultad</label>
           <select id="difficulty" name="difficulty" required>
             <option value="" selected disabled>Selecciona una dificultad</option>
             <option>Fácil</option>
+            <option>Intermedio</option>
             <option>Moderado</option>
             <option>Avanzado</option>
           </select>
@@ -83,11 +92,11 @@
       <section class="form-panel form-source" data-create-only-panel aria-labelledby="source-title">
         <div class="panel-heading">
           <span class="panel-number">02</span>
-          <div><h2 id="source-title">Enlace del recurso</h2><p>La tarjeta utilizará este enlace público de Google Drive.</p></div>
+        <div><h2 id="source-title">Enlace del recurso</h2><p>La tarjeta utilizará este enlace público de Google Drive.</p></div>
         </div>
 
         <label class="drive-label" for="drive-link">Adjuntar enlace de Google Drive</label>
-        <p class="field-help">Este enlace será el contenido público para subir a la plataforma. Recuerda activar el permiso <strong>“Cualquiera con el enlace”</strong> para la correcta visualización del documento.</p>
+        <p class="field-help">Este enlace será el contenido público para subir a la plataforma. Recuerda activar el permiso <strong>“Cualquiera con el enlace”</strong> para la correcta visualización del recurso.</p>
         <input id="drive-link" name="drive-link" type="url" inputmode="url" placeholder="https://drive.google.com/file/d/..." autocomplete="url" required aria-describedby="drive-help drive-error">
         <p id="drive-help" class="field-hint">Solo se aceptan enlaces que comiencen con https://drive.google.com/</p>
         <p id="drive-error" class="form-message form-message-error" role="alert" hidden>El enlace no es válido. Debes ingresar un enlace genuino de Google Drive para continuar.</p>

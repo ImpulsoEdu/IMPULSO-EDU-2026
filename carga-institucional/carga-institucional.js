@@ -208,6 +208,7 @@
         section: sectionSelect.value,
         title: form.title.value,
         description: form.description.value,
+        contentType: form["content-type"].value,
         difficulty: form.difficulty.value,
         driveUrl: driveInput.value,
         adminKey: adminKeyInput.value,
