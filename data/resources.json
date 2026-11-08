@@ -86,5 +86,16 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1nl8_4ZHWXeA_P4uIGXbUylNxghb7Tkm_/view?usp=drive_link",
     "createdAt": "2026-11-08T22:10:00.407Z"
+  },
+  {
+    "id": "830aa789-ef86-4b8b-9d65-71c44be7d47c",
+    "subject": "Matemática",
+    "section": "Operaciones combinadas",
+    "title": "Operaciones Combinadas - Nº Enteros",
+    "description": "Material audiovisual de las operaciones combinadas con numerosos enteros.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1zGysEvWgrUZBx20mASLz6XsDZED6maTd/view?usp=drive_link",
+    "createdAt": "2026-11-08T22:12:08.806Z"
   }
 ]
