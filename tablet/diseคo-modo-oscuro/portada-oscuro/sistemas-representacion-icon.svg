@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-label="Sistemas de Representación">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 95 610 575" role="img" aria-label="Sistemas de Representación">
   <filter id="teal-logo" color-interpolation-filters="sRGB">
     <feColorMatrix values="0 0 0 0 0.3804  0 0 0 0 0.6784  0 0 0 0 0.6275  -0.3333 -0.3333 -0.3333 0 1" />
   </filter>
-  <image href="sistemas-representacion-original.png" width="768" height="768" filter="url(#teal-logo)" />
+  <image href="sistemas-representacion-original.png" x="-80" y="-95" width="768" height="768" filter="url(#teal-logo)" />
 </svg>

@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 
-.sistemas-representacion-card-icon { display: block; width: 48px; height: 48px; object-fit: contain; }
+.sistemas-representacion-card-icon { display: block; width: 36px; height: 36px; object-fit: contain; }
 .portada-m-vil-claro {
   background: #f5f4f0;
   display: flex;
