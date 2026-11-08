@@ -64,5 +64,16 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1DF0D0j5xYG8Ow-RLAuBWdvczRmp7TG_9/view?usp=drive_link",
     "createdAt": "2026-11-08T21:53:58.759Z"
+  },
+  {
+    "id": "f5e2f14e-155e-44aa-9c85-80c2fc9e9f67",
+    "subject": "Química",
+    "section": "Contenidos Bases",
+    "title": "Compuestos Binarios",
+    "description": "Material audiovisual del tema de compuestos binarios.",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1mFUFe1385OKrTcr9d8bqWIsRJurP3qPg/view?usp=drive_link",
+    "createdAt": "2026-11-08T22:07:44.003Z"
   }
 ]
