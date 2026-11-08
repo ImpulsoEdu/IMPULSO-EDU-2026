@@ -145,7 +145,9 @@
     sectionLinks.map((link) => [link.dataset.sectionLink, getSectionTitle(link)])
   );
   const baseSectionLink = sectionLinks.find(
-    (link) => link.dataset.sectionLink === "contenidos-bases"
+    (link) =>
+      link.dataset.sectionLink === "contenidos-bases" ||
+      getSectionTitle(link) === "Contenidos Bases"
   );
   if (baseSectionLink) {
     const firstSectionLink = sectionLinks[0];
