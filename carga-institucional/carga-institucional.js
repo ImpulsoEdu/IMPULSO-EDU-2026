@@ -23,10 +23,11 @@
       "Operaciones combinadas",
       "Ecuación y función lineal",
       "Ecuación y función cuadratica",
+      "Contenidos Bases",
     ],
-    Física: ["M.R.U.", "M.R.U.V.", "Tiro Vertical", "Caída Libre"],
+    Física: ["M.R.U.", "M.R.U.V.", "Tiro Vertical", "Caída Libre", "Contenidos Bases"],
     Química: ["Contenidos Bases", "Regla del Octeto", "Estructura de Lewis"],
-    "Sistema de Representación": ["Perspectiva Dimetrica", "Proyección Ortogonal"],
+    "Sistema de Representación": ["Perspectiva Dimetrica", "Proyección Ortogonal", "Contenidos Bases"],
   };
   const subjectSources = {
     Matemática: "../materias/Matematica/index.html",
