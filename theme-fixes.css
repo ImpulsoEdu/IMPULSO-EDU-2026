@@ -16,6 +16,12 @@
   position: relative;
 }
 
+:is(.portada-m-vil-claro, .repositorio-digital-educativo-mobile)
+  .sistemas-representacion-card-icon {
+  width: 36px;
+  height: 36px;
+}
+
 :where(html, body, body *) {
   font-family: "Manrope", sans-serif !important;
 }
