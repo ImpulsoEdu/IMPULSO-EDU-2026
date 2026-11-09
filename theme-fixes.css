@@ -1081,9 +1081,16 @@ html {
   overflow: hidden;
   border-radius: 50%;
   background: transparent;
+  -webkit-mask-image: url("./Logo Impulso sin fondo vectorizado.svg");
+  mask-image: url("./Logo Impulso sin fondo vectorizado.svg");
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
-.cover-logo-base,
 .cover-logo-animation {
   position: absolute;
   inset: 0;
@@ -1092,22 +1099,13 @@ html {
   object-fit: contain;
 }
 
-.cover-logo-base {
-  z-index: 1;
-}
-
-.cover-logo-dark {
-  display: none;
-}
-
 .cover-logo-animation {
-  z-index: 2;
   border-radius: 50%;
   background: transparent;
   object-fit: cover;
   overflow: hidden;
-  opacity: 0.2;
-  mix-blend-mode: multiply;
+  opacity: 1;
+  mix-blend-mode: normal;
   animation: cover-logo-enter 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -1256,17 +1254,12 @@ html {
 }
 
 [data-theme-page].tema-oscuro .cover-logo-animation {
-  mix-blend-mode: screen;
-  opacity: 0.24;
   filter: brightness(1.15) contrast(0.95);
 }
 
-[data-theme-page].tema-oscuro .cover-logo-light {
-  display: none;
-}
-
-[data-theme-page].tema-oscuro .cover-logo-dark {
-  display: block;
+[data-theme-page].tema-oscuro .cover-logo-composite {
+  -webkit-mask-image: url("./Logo blanco sin fondo.png");
+  mask-image: url("./Logo blanco sin fondo.png");
 }
 
 @media (min-width: 768px) and (max-width: 1100px) {
