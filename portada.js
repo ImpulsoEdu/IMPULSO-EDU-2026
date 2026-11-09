@@ -88,17 +88,23 @@
     const coverCanvasContext = animatedCoverLogo.getContext("2d", { willReadFrequently: true });
     let coverLogoFrame;
 
+    const getCoverLogoColor = () =>
+      page?.classList.contains("tema-oscuro") ? [255, 255, 255] : [0, 0, 0];
+
     const resizeCoverCanvas = () => {
       const bounds = animatedCoverLogo.getBoundingClientRect();
-      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      const pixelRatio = Math.min(Math.max(window.devicePixelRatio || 1, 2), 3);
       animatedCoverLogo.width = Math.max(1, Math.round(bounds.width * pixelRatio));
       animatedCoverLogo.height = Math.max(1, Math.round(bounds.height * pixelRatio));
+      coverCanvasContext.imageSmoothingEnabled = true;
+      coverCanvasContext.imageSmoothingQuality = "high";
     };
 
     const drawTransparentCoverLogo = () => {
       if (coverLogoSource.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
         const width = animatedCoverLogo.width;
         const height = animatedCoverLogo.height;
+        const [logoRed, logoGreen, logoBlue] = getCoverLogoColor();
         coverCanvasContext.drawImage(coverLogoSource, 0, 0, width, height);
         const frame = coverCanvasContext.getImageData(0, 0, width, height);
         const pixels = frame.data;
@@ -109,6 +115,9 @@
           const blue = pixels[index + 2];
           const brightness = Math.max(red, green, blue);
           const softness = Math.min(1, Math.max(0, (brightness - 8) / 42));
+          pixels[index] = logoRed;
+          pixels[index + 1] = logoGreen;
+          pixels[index + 2] = logoBlue;
           pixels[index + 3] = Math.round(pixels[index + 3] * softness);
         }
 
