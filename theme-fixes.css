@@ -1091,13 +1091,19 @@ html {
   object-fit: contain;
 }
 
+.cover-logo-source {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .cover-logo-animation {
   border-radius: 50%;
   background: transparent;
-  object-fit: contain;
   overflow: hidden;
   opacity: 1;
-  mix-blend-mode: screen;
   animation: cover-logo-enter 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 

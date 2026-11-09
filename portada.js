@@ -82,7 +82,46 @@
   );
 
   const animatedCoverLogo = document.querySelector(".cover-logo-animation");
-  if (animatedCoverLogo) {
+  const coverLogoSource = document.querySelector(".cover-logo-source");
+
+  if (animatedCoverLogo && coverLogoSource) {
+    const coverCanvasContext = animatedCoverLogo.getContext("2d", { willReadFrequently: true });
+    let coverLogoFrame;
+
+    const resizeCoverCanvas = () => {
+      const bounds = animatedCoverLogo.getBoundingClientRect();
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      animatedCoverLogo.width = Math.max(1, Math.round(bounds.width * pixelRatio));
+      animatedCoverLogo.height = Math.max(1, Math.round(bounds.height * pixelRatio));
+    };
+
+    const drawTransparentCoverLogo = () => {
+      if (coverLogoSource.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        const width = animatedCoverLogo.width;
+        const height = animatedCoverLogo.height;
+        coverCanvasContext.drawImage(coverLogoSource, 0, 0, width, height);
+        const frame = coverCanvasContext.getImageData(0, 0, width, height);
+        const pixels = frame.data;
+
+        for (let index = 0; index < pixels.length; index += 4) {
+          const red = pixels[index];
+          const green = pixels[index + 1];
+          const blue = pixels[index + 2];
+          const brightness = Math.max(red, green, blue);
+          const softness = Math.min(1, Math.max(0, (brightness - 8) / 42));
+          pixels[index + 3] = Math.round(pixels[index + 3] * softness);
+        }
+
+        coverCanvasContext.putImageData(frame, 0, 0);
+      }
+      coverLogoFrame = window.requestAnimationFrame(drawTransparentCoverLogo);
+    };
+
+    resizeCoverCanvas();
+    window.addEventListener("resize", resizeCoverCanvas);
+    coverLogoSource.addEventListener("loadeddata", drawTransparentCoverLogo, { once: true });
+    drawTransparentCoverLogo();
+
     const navigateWithExit = (event) => {
       const link = event.target.closest("a");
       if (
@@ -112,6 +151,7 @@
     document.addEventListener("click", navigateWithExit);
     window.addEventListener("pagehide", () => {
       animatedCoverLogo.classList.add("is-exiting");
+      if (coverLogoFrame) window.cancelAnimationFrame(coverLogoFrame);
     });
   }
 
