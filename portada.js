@@ -80,6 +80,41 @@
   const revealPage = document.querySelector(
     ".portada-m-vil-claro, .repositorio-digital-educativo-mobile, .portada-tablet-claro, .repositorio-digital-educativo-tablet, .portada-escritorio-claro"
   );
+
+  const animatedCoverLogo = document.querySelector(".cover-logo-animation");
+  if (animatedCoverLogo) {
+    const navigateWithExit = (event) => {
+      const link = event.target.closest("a");
+      if (
+        !link ||
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        link.target === "_blank" ||
+        link.hasAttribute("download")
+      ) {
+        return;
+      }
+
+      const destination = new URL(link.href, window.location.href);
+      if (destination.origin !== window.location.origin) return;
+
+      event.preventDefault();
+      animatedCoverLogo.classList.add("is-exiting");
+      window.setTimeout(() => {
+        window.location.assign(destination.href);
+      }, 260);
+    };
+
+    document.addEventListener("click", navigateWithExit);
+    window.addEventListener("pagehide", () => {
+      animatedCoverLogo.classList.add("is-exiting");
+    });
+  }
+
   const revealCards = revealPage
     ? [
         ...revealPage.querySelectorAll(

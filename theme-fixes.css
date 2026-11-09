@@ -1077,8 +1077,37 @@ html {
   object-fit: contain;
 }
 
-.cover-logo-dark {
-  display: none;
+.cover-logo-animation {
+  border-radius: 50%;
+  background: transparent;
+  object-fit: cover;
+  overflow: hidden;
+  animation: cover-logo-enter 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cover-logo-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(8px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes cover-logo-exit {
+  to {
+    opacity: 0;
+    transform: scale(0.94) translateY(-4px);
+    filter: blur(4px);
+  }
+}
+
+.cover-logo-animation.is-exiting {
+  animation: cover-logo-exit 260ms cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
 .cover-intro {
@@ -1200,14 +1229,6 @@ html {
   color: #f3f0ea;
 }
 
-[data-theme-page].tema-oscuro .cover-logo-light {
-  display: none;
-}
-
-[data-theme-page].tema-oscuro .cover-logo-dark {
-  display: block;
-}
-
 @media (min-width: 768px) and (max-width: 1100px) {
   .cover-hero {
     min-height: 630px;
@@ -1272,6 +1293,13 @@ html {
   .portada-tablet-claro .edu-repositorio-2026 {
     grid-column: 1 / -1;
     grid-row: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-logo-animation,
+  .cover-logo-animation.is-exiting {
+    animation: none;
   }
 }
 
