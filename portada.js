@@ -105,7 +105,21 @@
         const width = animatedCoverLogo.width;
         const height = animatedCoverLogo.height;
         const [logoRed, logoGreen, logoBlue] = getCoverLogoColor();
-        coverCanvasContext.drawImage(coverLogoSource, 0, 0, width, height);
+        const sourceWidth = coverLogoSource.videoWidth || width;
+        const sourceHeight = coverLogoSource.videoHeight || height;
+        const scale = Math.min(width / sourceWidth, height / sourceHeight);
+        const drawnWidth = sourceWidth * scale;
+        const drawnHeight = sourceHeight * scale;
+        const offsetX = (width - drawnWidth) / 2;
+        const offsetY = (height - drawnHeight) / 2;
+        coverCanvasContext.clearRect(0, 0, width, height);
+        coverCanvasContext.drawImage(
+          coverLogoSource,
+          offsetX,
+          offsetY,
+          drawnWidth,
+          drawnHeight
+        );
         const frame = coverCanvasContext.getImageData(0, 0, width, height);
         const pixels = frame.data;
 
