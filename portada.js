@@ -85,25 +85,135 @@
   const coverLogoSource = document.querySelector(".cover-logo-source");
 
   if (animatedCoverLogo && coverLogoSource) {
-    const coverCanvasContext = animatedCoverLogo.getContext("2d", { willReadFrequently: true });
-    let coverLogoFrame;
     const usesVideoFrameCallback =
       typeof coverLogoSource.requestVideoFrameCallback === "function" &&
       typeof coverLogoSource.cancelVideoFrameCallback === "function";
+    let coverLogoFrame;
+    let coverLogoContext;
+    let drawTransparentCoverLogo;
+
+    const vertexShaderSource = `
+      attribute vec2 position;
+      varying vec2 textureCoordinate;
+
+      void main() {
+        textureCoordinate = position * 0.5 + 0.5;
+        gl_Position = vec4(position, 0.0, 1.0);
+      }
+    `;
+    const fragmentShaderSource = `
+      precision mediump float;
+      uniform sampler2D videoTexture;
+      uniform vec2 videoScale;
+      uniform vec3 logoColor;
+      varying vec2 textureCoordinate;
+
+      void main() {
+        vec2 coordinate = (textureCoordinate - 0.5) / videoScale + 0.5;
+        if (coordinate.x < 0.0 || coordinate.x > 1.0 ||
+            coordinate.y < 0.0 || coordinate.y > 1.0) {
+          gl_FragColor = vec4(0.0);
+          return;
+        }
+
+        vec4 videoColor = texture2D(videoTexture, coordinate);
+        float brightness = max(videoColor.r, max(videoColor.g, videoColor.b));
+        float softness = clamp((brightness - 8.0 / 255.0) / (42.0 / 255.0), 0.0, 1.0);
+        gl_FragColor = vec4(logoColor, videoColor.a * softness);
+      }
+    `;
 
     const getCoverLogoColor = () =>
       page?.classList.contains("tema-oscuro") ? [255, 255, 255] : [0, 0, 0];
 
-    const resizeCoverCanvas = () => {
-      const bounds = animatedCoverLogo.getBoundingClientRect();
-      const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
-      animatedCoverLogo.width = Math.max(1, Math.round(bounds.width * pixelRatio));
-      animatedCoverLogo.height = Math.max(1, Math.round(bounds.height * pixelRatio));
-      coverCanvasContext.imageSmoothingEnabled = true;
-      coverCanvasContext.imageSmoothingQuality = "high";
+    const createShader = (context, type, source) => {
+      const shader = context.createShader(type);
+      if (!shader) throw new Error("No se pudo crear el shader del logo.");
+      context.shaderSource(shader, source);
+      context.compileShader(shader);
+      if (!context.getShaderParameter(shader, context.COMPILE_STATUS)) {
+        const message = context.getShaderInfoLog(shader);
+        context.deleteShader(shader);
+        throw new Error(`No se pudo compilar el shader del logo: ${message}`);
+      }
+      return shader;
     };
 
-    const drawTransparentCoverLogo = () => {
+    const createCoverLogoRenderer = () => {
+      const context =
+        animatedCoverLogo.getContext("webgl", { alpha: true, antialias: true }) ||
+        animatedCoverLogo.getContext("experimental-webgl", { alpha: true, antialias: true });
+      if (!context) return false;
+
+      const vertexShader = createShader(context, context.VERTEX_SHADER, vertexShaderSource);
+      const fragmentShader = createShader(context, context.FRAGMENT_SHADER, fragmentShaderSource);
+      const program = context.createProgram();
+      if (!program) throw new Error("No se pudo crear el programa de animación del logo.");
+      context.attachShader(program, vertexShader);
+      context.attachShader(program, fragmentShader);
+      context.linkProgram(program);
+      if (!context.getProgramParameter(program, context.LINK_STATUS)) {
+        throw new Error(`No se pudo enlazar el programa del logo: ${context.getProgramInfoLog(program)}`);
+      }
+
+      const position = context.getAttribLocation(program, "position");
+      const videoScale = context.getUniformLocation(program, "videoScale");
+      const logoColor = context.getUniformLocation(program, "logoColor");
+      const videoTexture = context.createTexture();
+      const vertexBuffer = context.createBuffer();
+      if (position < 0 || !videoScale || !logoColor || !videoTexture || !vertexBuffer) {
+        throw new Error("No se pudo preparar el renderizado del logo.");
+      }
+
+      context.bindBuffer(context.ARRAY_BUFFER, vertexBuffer);
+      context.bufferData(
+        context.ARRAY_BUFFER,
+        new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+        context.STATIC_DRAW
+      );
+      context.useProgram(program);
+      context.enableVertexAttribArray(position);
+      context.vertexAttribPointer(position, 2, context.FLOAT, false, 0, 0);
+      context.activeTexture(context.TEXTURE0);
+      context.bindTexture(context.TEXTURE_2D, videoTexture);
+      context.texParameteri(context.TEXTURE_2D, context.TEXTURE_MIN_FILTER, context.LINEAR);
+      context.texParameteri(context.TEXTURE_2D, context.TEXTURE_MAG_FILTER, context.LINEAR);
+      context.texParameteri(context.TEXTURE_2D, context.TEXTURE_WRAP_S, context.CLAMP_TO_EDGE);
+      context.texParameteri(context.TEXTURE_2D, context.TEXTURE_WRAP_T, context.CLAMP_TO_EDGE);
+      context.pixelStorei(context.UNPACK_FLIP_Y_WEBGL, true);
+      context.uniform1i(context.getUniformLocation(program, "videoTexture"), 0);
+      context.enable(context.BLEND);
+      context.blendFuncSeparate(
+        context.SRC_ALPHA,
+        context.ONE_MINUS_SRC_ALPHA,
+        context.ONE,
+        context.ONE_MINUS_SRC_ALPHA
+      );
+
+      coverLogoContext = {
+        context,
+        videoScale,
+        logoColor,
+        videoTexture,
+      };
+      return true;
+    };
+
+    const resizeCoverCanvas = () => {
+      const bounds = animatedCoverLogo.getBoundingClientRect();
+      const width = animatedCoverLogo.clientWidth || bounds.width;
+      const height = animatedCoverLogo.clientHeight || bounds.height;
+      const pixelRatio = Math.min(Math.max(window.devicePixelRatio || 1, 2), 3);
+      const pixelWidth = Math.max(1, Math.round(width * pixelRatio));
+      const pixelHeight = Math.max(1, Math.round(height * pixelRatio));
+      if (animatedCoverLogo.width !== pixelWidth || animatedCoverLogo.height !== pixelHeight) {
+        animatedCoverLogo.width = pixelWidth;
+        animatedCoverLogo.height = pixelHeight;
+        coverLogoContext?.context.viewport(0, 0, pixelWidth, pixelHeight);
+      }
+    };
+
+    const drawTransparentCoverLogoWithCanvas = () => {
       if (coverLogoSource.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
         const width = animatedCoverLogo.width;
         const height = animatedCoverLogo.height;
@@ -115,15 +225,18 @@
         const drawnHeight = sourceHeight * scale;
         const offsetX = (width - drawnWidth) / 2;
         const offsetY = (height - drawnHeight) / 2;
-        coverCanvasContext.clearRect(0, 0, width, height);
-        coverCanvasContext.drawImage(
+        const canvasContext = animatedCoverLogo.getContext("2d", { willReadFrequently: true });
+        canvasContext.imageSmoothingEnabled = true;
+        canvasContext.imageSmoothingQuality = "high";
+        canvasContext.clearRect(0, 0, width, height);
+        canvasContext.drawImage(
           coverLogoSource,
           offsetX,
           offsetY,
           drawnWidth,
           drawnHeight
         );
-        const frame = coverCanvasContext.getImageData(0, 0, width, height);
+        const frame = canvasContext.getImageData(0, 0, width, height);
         const pixels = frame.data;
 
         for (let index = 0; index < pixels.length; index += 4) {
@@ -138,19 +251,56 @@
           pixels[index + 3] = Math.round(pixels[index + 3] * softness);
         }
 
-        coverCanvasContext.putImageData(frame, 0, 0);
+        canvasContext.putImageData(frame, 0, 0);
       }
       coverLogoFrame = usesVideoFrameCallback
-        ? coverLogoSource.requestVideoFrameCallback(drawTransparentCoverLogo)
-        : window.requestAnimationFrame(drawTransparentCoverLogo);
+        ? coverLogoSource.requestVideoFrameCallback(drawTransparentCoverLogoWithCanvas)
+        : window.requestAnimationFrame(drawTransparentCoverLogoWithCanvas);
     };
 
-    resizeCoverCanvas();
-    window.addEventListener("resize", resizeCoverCanvas);
-    if (coverLogoSource.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-      drawTransparentCoverLogo();
-    } else {
-      coverLogoSource.addEventListener("loadeddata", drawTransparentCoverLogo, { once: true });
+    try {
+      if (createCoverLogoRenderer()) {
+        drawTransparentCoverLogo = () => {
+          if (coverLogoSource.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+            const { context, videoScale, logoColor, videoTexture } = coverLogoContext;
+            const sourceWidth = coverLogoSource.videoWidth || 1;
+            const sourceHeight = coverLogoSource.videoHeight || 1;
+            const aspectRatio = sourceWidth / sourceHeight;
+            const canvasAspectRatio = animatedCoverLogo.width / animatedCoverLogo.height;
+            const scaleX = Math.min(1, aspectRatio / canvasAspectRatio);
+            const scaleY = Math.min(1, canvasAspectRatio / aspectRatio);
+            const [red, green, blue] = getCoverLogoColor();
+
+            context.clear(context.COLOR_BUFFER_BIT);
+            context.uniform2f(videoScale, scaleX, scaleY);
+            context.uniform3f(logoColor, red / 255, green / 255, blue / 255);
+            context.bindTexture(context.TEXTURE_2D, videoTexture);
+            context.texImage2D(
+              context.TEXTURE_2D,
+              0,
+              context.RGBA,
+              context.RGBA,
+              context.UNSIGNED_BYTE,
+              coverLogoSource
+            );
+            context.drawArrays(context.TRIANGLE_STRIP, 0, 4);
+          }
+          coverLogoFrame = usesVideoFrameCallback
+            ? coverLogoSource.requestVideoFrameCallback(drawTransparentCoverLogo)
+            : window.requestAnimationFrame(drawTransparentCoverLogo);
+        };
+      } else {
+        drawTransparentCoverLogo = drawTransparentCoverLogoWithCanvas;
+      }
+      resizeCoverCanvas();
+      window.addEventListener("resize", resizeCoverCanvas);
+      if (coverLogoSource.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        drawTransparentCoverLogo();
+      } else {
+        coverLogoSource.addEventListener("loadeddata", drawTransparentCoverLogo, { once: true });
+      }
+    } catch (error) {
+      console.error("No se pudo iniciar la animación del logo.", error);
     }
 
     const navigateWithExit = (event) => {

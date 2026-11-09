@@ -1110,13 +1110,9 @@ html {
 @keyframes cover-logo-enter {
   from {
     opacity: 0;
-    transform: scale(0.88) translateY(8px);
-    filter: blur(6px);
   }
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -1252,7 +1248,7 @@ html {
 }
 
 [data-theme-page].tema-oscuro .cover-logo-animation {
-  filter: brightness(1.08) contrast(0.96);
+  filter: none;
 }
 
 @media (min-width: 768px) and (max-width: 1100px) {
