@@ -222,7 +222,7 @@
 
   const getSubjectKey = (card) => {
     const match = card.pathname?.match(
-      /\/materias\/(Matematica|Fisica|Quimica|SisDeRepr)\/?$/
+      /\/materias\/(?:movil\/|tablet\/)?(Matematica|Fisica|Quimica|SisDeRepr)\/?$/
     );
     return match?.[1];
   };
