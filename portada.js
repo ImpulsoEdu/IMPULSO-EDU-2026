@@ -87,13 +87,16 @@
   if (animatedCoverLogo && coverLogoSource) {
     const coverCanvasContext = animatedCoverLogo.getContext("2d", { willReadFrequently: true });
     let coverLogoFrame;
+    const usesVideoFrameCallback =
+      typeof coverLogoSource.requestVideoFrameCallback === "function" &&
+      typeof coverLogoSource.cancelVideoFrameCallback === "function";
 
     const getCoverLogoColor = () =>
       page?.classList.contains("tema-oscuro") ? [255, 255, 255] : [0, 0, 0];
 
     const resizeCoverCanvas = () => {
       const bounds = animatedCoverLogo.getBoundingClientRect();
-      const pixelRatio = Math.min(Math.max(window.devicePixelRatio || 1, 2), 3);
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
       animatedCoverLogo.width = Math.max(1, Math.round(bounds.width * pixelRatio));
       animatedCoverLogo.height = Math.max(1, Math.round(bounds.height * pixelRatio));
       coverCanvasContext.imageSmoothingEnabled = true;
@@ -137,13 +140,18 @@
 
         coverCanvasContext.putImageData(frame, 0, 0);
       }
-      coverLogoFrame = window.requestAnimationFrame(drawTransparentCoverLogo);
+      coverLogoFrame = usesVideoFrameCallback
+        ? coverLogoSource.requestVideoFrameCallback(drawTransparentCoverLogo)
+        : window.requestAnimationFrame(drawTransparentCoverLogo);
     };
 
     resizeCoverCanvas();
     window.addEventListener("resize", resizeCoverCanvas);
-    coverLogoSource.addEventListener("loadeddata", drawTransparentCoverLogo, { once: true });
-    drawTransparentCoverLogo();
+    if (coverLogoSource.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      drawTransparentCoverLogo();
+    } else {
+      coverLogoSource.addEventListener("loadeddata", drawTransparentCoverLogo, { once: true });
+    }
 
     const navigateWithExit = (event) => {
       const link = event.target.closest("a");
@@ -174,7 +182,13 @@
     document.addEventListener("click", navigateWithExit);
     window.addEventListener("pagehide", () => {
       animatedCoverLogo.classList.add("is-exiting");
-      if (coverLogoFrame) window.cancelAnimationFrame(coverLogoFrame);
+      if (coverLogoFrame) {
+        if (usesVideoFrameCallback) {
+          coverLogoSource.cancelVideoFrameCallback(coverLogoFrame);
+        } else {
+          window.cancelAnimationFrame(coverLogoFrame);
+        }
+      }
     });
   }
 
