@@ -1332,6 +1332,12 @@ html {
     padding-bottom: 52px;
   }
 
+  .cover-logo-slot,
+  .cover-logo-frame {
+    width: 380px;
+    height: 380px;
+  }
+
   .cover-hero-inner {
     min-height: 628px;
   }
