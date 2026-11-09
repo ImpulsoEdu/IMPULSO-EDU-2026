@@ -1094,10 +1094,10 @@ html {
 .cover-logo-animation {
   border-radius: 50%;
   background: transparent;
-  object-fit: cover;
+  object-fit: contain;
   overflow: hidden;
   opacity: 1;
-  mix-blend-mode: normal;
+  mix-blend-mode: screen;
   animation: cover-logo-enter 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -1246,7 +1246,7 @@ html {
 }
 
 [data-theme-page].tema-oscuro .cover-logo-animation {
-  filter: brightness(1.15) contrast(0.95);
+  filter: brightness(1.08) contrast(0.96);
 }
 
 @media (min-width: 768px) and (max-width: 1100px) {
