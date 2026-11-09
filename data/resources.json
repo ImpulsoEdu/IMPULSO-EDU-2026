@@ -207,5 +207,16 @@
     "difficulty": "Intermedio",
     "driveUrl": "https://drive.google.com/file/d/1ExXOpinQH_dFym-iTbvsEomCRon-TbiF/view?usp=drive_link",
     "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "3a593e68-b1c8-49f6-adda-68cb83acf411",
+    "subject": "Matemática",
+    "section": "Ecuación y función cuadratica",
+    "title": "Ecuación Cuadrática",
+    "description": "Material audiovisual del tema respecto a la ecuación cuadrática.",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1Ykg0yF8ymrzn3EkwbFxLZYLvfPO9W52M/view?usp=drive_link",
+    "createdAt": "2026-11-09T00:02:05.986Z"
   }
 ]
