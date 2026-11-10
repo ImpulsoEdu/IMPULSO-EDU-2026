@@ -198,17 +198,6 @@
     "createdAt": "2026-01-01T00:00:00.000Z"
   },
   {
-    "id": "legacy-sis-perspectivas",
-    "subject": "Sistema de Representación",
-    "section": "Perspectiva Dimetrica",
-    "title": "Ejemplos de Perspectivas",
-    "description": "Material de estudio sobre perspectiva dimétrica.",
-    "contentType": "video",
-    "difficulty": "Intermedio",
-    "driveUrl": "https://drive.google.com/file/d/1ExXOpinQH_dFym-iTbvsEomCRon-TbiF/view?usp=drive_link",
-    "createdAt": "2026-01-01T00:00:00.000Z"
-  },
-  {
     "id": "3a593e68-b1c8-49f6-adda-68cb83acf411",
     "subject": "Matemática",
     "section": "Ecuación y función cuadratica",
