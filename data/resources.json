@@ -207,5 +207,16 @@
     "difficulty": "Moderado",
     "driveUrl": "https://drive.google.com/file/d/1Ykg0yF8ymrzn3EkwbFxLZYLvfPO9W52M/view?usp=drive_link",
     "createdAt": "2026-11-09T00:02:05.986Z"
+  },
+  {
+    "id": "728bfa37-eb81-43bd-9497-1856ffac75a2",
+    "subject": "Sistema de Representación",
+    "section": "Perspectiva Dimetrica",
+    "title": "Perspectiva Ejemplo 3",
+    "description": "Tercera parte del contenido del material audiovisual de \"Perspectiva\"",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1vr7J6rG4Isc6QeSqbz7zDMTko1RC__nb/view?usp=drive_link",
+    "createdAt": "2026-11-10T01:03:52.835Z"
   }
 ]
