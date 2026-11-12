@@ -240,5 +240,16 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/18IKp9KcxwxktyCWMHbY6bfNMa5On8kqN/view?usp=drivesdk",
     "createdAt": "2026-11-12T23:08:44.324Z"
+  },
+  {
+    "id": "33034448-ee70-4d0e-a483-748d4ab667e3",
+    "subject": "Física",
+    "section": "Contenidos Bases",
+    "title": "Movimiento Rectilíneo Uniforme",
+    "description": "¡Aprender las leyes de newton nos permite entender con claridad la materia de física!",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1-VEYTq9QlCeL1xKxR2LWbGrYA1YsM2HJ/view?usp=drivesdk",
+    "createdAt": "2026-11-12T23:25:04.073Z"
   }
 ]
