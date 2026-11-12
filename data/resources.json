@@ -218,5 +218,16 @@
     "difficulty": "Moderado",
     "driveUrl": "https://drive.google.com/file/d/1vr7J6rG4Isc6QeSqbz7zDMTko1RC__nb/view?usp=drive_link",
     "createdAt": "2026-11-10T01:03:52.835Z"
+  },
+  {
+    "id": "7cba890c-3dd2-4d64-abcd-d0da9fb78d57",
+    "subject": "Física",
+    "section": "M.R.U.",
+    "title": "Movimiento Rectilíneo Uniforme",
+    "description": "¡Este material audiovisual te ayudará a entender con claridad este tema!",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1SKfqskCKcxgSd-vsnF1idmmhiqL1kZCp/view?usp=drivesdk",
+    "createdAt": "2026-11-12T22:57:51.686Z"
   }
 ]
