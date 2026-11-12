@@ -229,5 +229,16 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1SKfqskCKcxgSd-vsnF1idmmhiqL1kZCp/view?usp=drivesdk",
     "createdAt": "2026-11-12T22:57:51.686Z"
+  },
+  {
+    "id": "06dc6009-94b9-4e03-90c7-f5b2994e1c1e",
+    "subject": "Física",
+    "section": "Contenidos Bases",
+    "title": "Movimiento Rectilíneo Uniforme",
+    "description": "Video explicativo del tema \"Energia\" que puede interesarte.",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/18IKp9KcxwxktyCWMHbY6bfNMa5On8kqN/view?usp=drivesdk",
+    "createdAt": "2026-11-12T23:08:44.324Z"
   }
 ]
