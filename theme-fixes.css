@@ -404,6 +404,8 @@ html {
   display: block;
   width: clamp(180px, 24vw, 280px);
   height: clamp(180px, 24vw, 280px);
+  min-width: clamp(180px, 24vw, 280px);
+  min-height: clamp(180px, 24vw, 280px);
   max-width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -473,6 +475,8 @@ html {
   .impulso-footer-logo {
     width: clamp(84px, 24vw, 150px);
     height: clamp(84px, 24vw, 150px);
+    min-width: clamp(84px, 24vw, 150px);
+    min-height: clamp(84px, 24vw, 150px);
   }
 
   .impulso-footer-partners ul {
