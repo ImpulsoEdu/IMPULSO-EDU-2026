@@ -295,5 +295,16 @@
     "difficulty": "Moderado",
     "driveUrl": "https://drive.google.com/file/d/18Yvg7Zb6eSv4rGfao-QQeSRE1jxHhJmu/view?usp=drivesdk",
     "createdAt": "2026-11-13T01:28:58.998Z"
+  },
+  {
+    "id": "5bc70346-3d62-4262-9e7a-e95c742ef4ef",
+    "subject": "Matemática",
+    "section": "Contenidos Bases",
+    "title": "Movimiento Rectilíneo Uniforme",
+    "description": "Este video te servirá para entender a la perfección el tema de notación científica.",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1nYDIWB5QsN-QyyxXD8a9VvNoeBuTGrVe/view?usp=drivesdk",
+    "createdAt": "2026-11-13T01:33:49.549Z"
   }
 ]
