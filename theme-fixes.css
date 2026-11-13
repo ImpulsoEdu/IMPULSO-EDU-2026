@@ -161,6 +161,7 @@
 .social-instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d 58%, #fcb045); }
 .social-facebook { background: #1877f2; }
 .social-youtube { background: #e62117; }
+.social-grid .social-youtube { display: none; }
 .social-tiktok { background: #111; }
 
 [data-theme-page].tema-oscuro .social-section {
