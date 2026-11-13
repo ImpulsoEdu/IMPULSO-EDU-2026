@@ -6,6 +6,7 @@
   const submitMessage = document.querySelector("[data-submit-message]");
   const subjectSelect = document.querySelector("#subject");
   const sectionSelect = document.querySelector("#section");
+  const titleInput = document.querySelector("#title");
   const adminKeyInput = document.querySelector("#admin-key");
   const deleteAdminKeyInput = document.querySelector("#delete-admin-key");
   const resourceToDeleteSelect = document.querySelector("#resource-to-delete");
@@ -226,7 +227,7 @@
       body: JSON.stringify({
         subject: subjectSelect.value,
         section: sectionSelect.value,
-        title: form.title.value,
+        title: titleInput.value,
         description: form.description.value,
         contentType: form["content-type"].value,
         difficulty: form.difficulty.value,
