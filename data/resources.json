@@ -306,5 +306,16 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1nYDIWB5QsN-QyyxXD8a9VvNoeBuTGrVe/view?usp=drivesdk",
     "createdAt": "2026-11-13T01:33:49.549Z"
+  },
+  {
+    "id": "4b7c224e-6ade-46ca-a117-17743f9fe212",
+    "subject": "Sistema de Representación",
+    "section": "Contenidos Bases",
+    "title": "Margenes y Rotulo",
+    "description": "Con este video, aprenderás cómo son las medidas correspondientes de los márgenes y el rótulo en el área de Sistema de Representación.",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1vIH16eILDi6x2hzPTym6fjPk6oZm84bu/view?usp=drive_link",
+    "createdAt": "2026-11-13T04:15:39.554Z"
   }
 ]
