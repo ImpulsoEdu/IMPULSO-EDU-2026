@@ -251,5 +251,16 @@
     "difficulty": "Fácil",
     "driveUrl": "https://drive.google.com/file/d/1-VEYTq9QlCeL1xKxR2LWbGrYA1YsM2HJ/view?usp=drivesdk",
     "createdAt": "2026-11-12T23:25:04.073Z"
+  },
+  {
+    "id": "8516b8b1-3682-4240-a798-b85d6a6b4b4d",
+    "subject": "Física",
+    "section": "M.R.U.V.",
+    "title": "Movimiento Rectilíneo Uniforme",
+    "description": "Material audiovisual de gráficos de vectores en el MRUA",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/1r2omkBAVWP8K-pLUF3ihaTyR-BPNYrwo/view?usp=drivesdk",
+    "createdAt": "2026-11-13T00:12:12.631Z"
   }
 ]
