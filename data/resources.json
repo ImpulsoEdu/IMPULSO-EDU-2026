@@ -273,5 +273,16 @@
     "difficulty": "Moderado",
     "driveUrl": "https://drive.google.com/file/d/15Mj8r0P-xm8Vl7IyX0GEcSf2c9jsNThp/view?usp=drivesdk",
     "createdAt": "2026-11-13T00:17:56.502Z"
+  },
+  {
+    "id": "fac9303a-399c-48e3-833e-c4d4223a8910",
+    "subject": "Matemática",
+    "section": "Contenidos Bases",
+    "title": "Movimiento Rectilíneo Uniforme",
+    "description": "Material audiovisual del tema Límite del area de Matemática",
+    "contentType": "video",
+    "difficulty": "Fácil",
+    "driveUrl": "https://drive.google.com/file/d/1qofnwNNcL1M32MzdllXPOIJTu3dpwzH_/view?usp=drivesdk",
+    "createdAt": "2026-11-13T01:27:23.479Z"
   }
 ]
