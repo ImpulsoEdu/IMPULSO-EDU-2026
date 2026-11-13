@@ -262,5 +262,16 @@
     "difficulty": "Moderado",
     "driveUrl": "https://drive.google.com/file/d/1r2omkBAVWP8K-pLUF3ihaTyR-BPNYrwo/view?usp=drivesdk",
     "createdAt": "2026-11-13T00:12:12.631Z"
+  },
+  {
+    "id": "c914196c-1592-49ce-88de-b8e3bfbc777d",
+    "subject": "Física",
+    "section": "M.R.U.V.",
+    "title": "Movimiento Rectilíneo Uniforme",
+    "description": "Segunda parte del material audiovisual del desplazamiento de vectores en el MRUA",
+    "contentType": "video",
+    "difficulty": "Moderado",
+    "driveUrl": "https://drive.google.com/file/d/15Mj8r0P-xm8Vl7IyX0GEcSf2c9jsNThp/view?usp=drivesdk",
+    "createdAt": "2026-11-13T00:17:56.502Z"
   }
 ]
